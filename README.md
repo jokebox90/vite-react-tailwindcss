@@ -30,37 +30,37 @@ Le projet comprend plusieurs scripts pour des tâches de développement courante
 
 Le projet utilise les dépendances clés suivantes :
 
-**react et react-dom:** Pour la construction de l'interface utilisateur.
+* **react et react-dom:** Pour la construction de l'interface utilisateur.
 
-**react-router-dom:** Pour le routage et la navigation entre les composants.
+* **react-router-dom:** Pour le routage et la navigation entre les composants.
 
-**vite:** Pour une expérience de développement plus rapide et plus légère.
+* **vite:** Pour une expérience de développement plus rapide et plus légère.
 
-**tailwindcss:** Pour le CSS utility-first qui permet de composer des interfaces efficaces.
+* **tailwindcss:** Pour le CSS utility-first qui permet de composer des interfaces efficaces.
 
-**typescript:** Pour les types statiques et l'assurance d'un code bien structuré.
+* **typescript:** Pour les types statiques et l'assurance d'un code bien structuré.
 
-**eslint:** Pour le linting et le maintien de la qualité du code.
+* **eslint:** Pour le linting et le maintien de la qualité du code.
 
 ## Structure du projet
 
 Bienvenue dans le coffre aux trésors, il est rempli d'outils qui constituent toute la richesse du projet.
 
-**App.tsx:**
+* **App.tsx**
 
 Le fichier App.tsx est le point d'entrée de l'application React. Il contient les routes vers toutes les pages de l'application et démarre le composant principal. Il agit comme son chef d'orchestre, c'est le départ de toutes les pistes que l'utilisateur peut emprunter et expérimenter lors de sa navigation à travers l'application. Si nous naviguons vers le chemin "/", nous pouvons voir le composant Home, et si nous naviguons vers "/about", nous pouvons voir le composant About.
 
-**Root.tsx**
+* **Root.tsx**
 
 L'application contient un composant Root utilisé lors de l'ouverture de chaque page. Il agit comme un gabarit qui englobe un autre composant chargé du rendu final et permet de partger des fonctionnalités entre plusieurs pages.
 
-**pages:** La structure, chaque page est une pièce unique qui s'assemble pour former une application.
+* **pages:** La structure, chaque page est une pièce unique qui s'assemble pour former une application.
 
-**composables:** La matière, où nous gardons des fonctions réutilisables pour ajouter des fonctionnalités à nos composants.
+* **composables:** La matière, où nous gardons des fonctions réutilisables pour ajouter des fonctionnalités à nos composants.
 
-**components:** L'équipement, des briques de code réutilisables qui s'assemblent pour construire l'interface utilisateur.
+* **components:** L'équipement, des briques de code réutilisables qui s'assemblent pour construire l'interface utilisateur.
 
-**assets:** Saccoche où nous gardons toutes nos images, icônes et autres fichiers multimédias.
+* **assets:** Saccoche où nous gardons toutes nos images, icônes et autres fichiers multimédias.
 
 ### TailwindCSS
 
