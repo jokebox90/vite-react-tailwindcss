@@ -1,3 +1,4 @@
+
 #root {
   @apply container mx-auto p-8;
   @apply flex flex-col gap-6;
@@ -5,15 +6,20 @@
 }
 
 .header {
-  @apply py-2;
-  @apply bg-zinc-800 rounded-lg;
+  @apply py-2 rounded-lg;
+  @apply bg-zinc-300 text-zinc-950;
+  @apply dark:bg-zinc-800 dark:text-zinc-50;
+  @apply transition delay-100 duration-1000;
 }
 
 .nav {
   @apply inline-flex gap-4;
 }
 .nav-link {
-  @apply px-4 py-2 bg-zinc-900 border border-zinc-700 rounded-lg;
+  @apply px-4 py-2 border rounded-lg shadow;
+  @apply dark:bg-zinc-900 dark:border-zinc-700;
+  @apply bg-zinc-100 border-zinc-200;
+  @apply transition delay-100 duration-1000;
 }
 
 .logo {
