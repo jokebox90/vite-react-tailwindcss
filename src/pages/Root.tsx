@@ -8,11 +8,16 @@ type AppPropsType = {
   config: object;
 };
 
+function isDarkSystemDefault() {
+  return !localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)")
+    .matches;
+}
+
 export default function Root(Props: AppPropsType) {
-  const [darkMode, setDarkMode] = useState(false);
+  const [darkMode, setDarkMode] = useState(isDarkSystemDefault());
 
   const toggleDarkMode = () => {
-    setDarkMode(darkMode => !darkMode);
+    setDarkMode((darkMode) => !darkMode);
   };
 
   useEffect(() => {
@@ -20,20 +25,10 @@ export default function Root(Props: AppPropsType) {
       localStorage.theme = "dark";
       document.documentElement.classList.add("dark");
     } else {
-      localStorage.theme = null;
+      delete localStorage.theme;
       document.documentElement.classList.remove("dark");
     }
   }, [darkMode]);
-
-  // if (
-  //   localStorage.theme === "dark" ||
-  //   (!("theme" in localStorage) &&
-  //     window.matchMedia("(prefers-color-scheme: dark)").matches)
-  // ) {
-  //   setDarkMode(true);
-  // } else {
-  //   setDarkMode(false);
-  // }
 
   return (
     <>
@@ -47,7 +42,7 @@ export default function Root(Props: AppPropsType) {
             About
           </NavLink>
 
-          <button onClick={toggleDarkMode} className="nav-link">
+          <button onClick={() => toggleDarkMode()} className="nav-link">
             {darkMode ? (
               <FontAwesomeIcon icon="fa-solid fa-sun" />
             ) : (

@@ -17,8 +17,8 @@
 }
 .nav-link {
   @apply px-4 py-2 border rounded-lg shadow;
-  @apply dark:bg-zinc-900 dark:border-zinc-700;
   @apply bg-zinc-100 border-zinc-200;
+  @apply dark:bg-zinc-900 dark:border-zinc-700;
   @apply transition delay-100 duration-1000;
 }
 
