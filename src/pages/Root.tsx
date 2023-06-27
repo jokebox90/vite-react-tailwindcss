@@ -1,6 +1,7 @@
 // src/Root.tsx
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { icon } from "@fortawesome/fontawesome-svg-core/import.macro";
 import { useLayoutEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
@@ -46,9 +47,9 @@ export default function Root(Props: AppPropsType) {
 
           <button onClick={() => toggleDarkMode()} className="nav-link">
             {darkMode ? (
-              <FontAwesomeIcon icon="fa-solid fa-sun" />
+              <FontAwesomeIcon icon={icon({ name: "sun", style: "solid" })} />
             ) : (
-              <FontAwesomeIcon icon="fa-solid fa-moon" />
+              <FontAwesomeIcon icon={icon({ name: "moon", style: "solid" })} />
             )}
           </button>
         </nav>
