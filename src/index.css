@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply font-sans;
+  @apply font-normal;
+
+  @apply dark:bg-zinc-900 dark:text-zinc-50 bg-zinc-200 text-zinc-950;
+  @apply antialiased grayscale-0;
+}
+
+a {
+  @apply text-sm font-semibold text-blue-500;
+}
+a:hover {
+  @apply dark:text-blue-600;
+  @apply text-blue-400;
+}
+
+body {
+  @apply m-0;
+  @apply flex place-items-center;
+  @apply min-w-[320px] min-h-screen;
+}
+
+h1 {
+  @apply text-6xl;
+}
+
+button {
+  @apply bg-zinc-50;
+  @apply rounded-lg border border-transparent;
+  @apply px-4 py-2;
+  @apply text-base font-sans font-semibold;
+  @apply bg-zinc-900;
+  @apply cursor-pointer;
+  @apply transition-all duration-300;
+}
+
+button:hover {
+  @apply border-blue-700;
+}
+
+button:focus,
+button:focus-visible {
+  @apply ring-4 ring-blue-600;
+}
