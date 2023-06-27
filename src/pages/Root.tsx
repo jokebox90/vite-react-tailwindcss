@@ -1,7 +1,7 @@
 // src/Root.tsx
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 
 type AppPropsType = {
@@ -9,8 +9,10 @@ type AppPropsType = {
 };
 
 function isDarkSystemDefault() {
-  return !localStorage.theme && window.matchMedia("(prefers-color-scheme: dark)")
-    .matches;
+  return (
+    localStorage?.theme === "dark" ||
+    window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
 }
 
 export default function Root(Props: AppPropsType) {
@@ -20,7 +22,7 @@ export default function Root(Props: AppPropsType) {
     setDarkMode((darkMode) => !darkMode);
   };
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (darkMode) {
       localStorage.theme = "dark";
       document.documentElement.classList.add("dark");

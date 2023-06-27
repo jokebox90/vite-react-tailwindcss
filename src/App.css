@@ -25,9 +25,9 @@
 .logo {
   @apply h-48 p-6;
 }
-.logo.react {
+/* .logo.react {
   @apply animate-[spin_20s_linear_infinite];
-}
+} */
 .logo:hover {
   @apply drop-shadow-[0_25px_25px_#1d4ed8];
 }
