@@ -38,6 +38,8 @@ Le projet utilise les dépendances clés suivantes :
 
 * **tailwindcss:** Pour le CSS utility-first qui permet de composer des interfaces efficaces.
 
+* **gsap:** Pour créer des animations sur les pages de manière plus structurée et plus simple.
+
 * **typescript:** Pour les types statiques et l'assurance d'un code bien structuré.
 
 * **eslint:** Pour le linting et le maintien de la qualité du code.
@@ -95,6 +97,45 @@ L'utilisation de TailwindCSS et de la directive "@apply" nécessite la présence
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
+
+## GSAP (GreenSock Animation Platform)
+
+GSAP est une bibliothèque JavaScript robuste et performante. Elle nous permet de créer des animations complexes avec une syntaxe facile à utiliser. Dans ce projet, nous utilisons GSAP pour animer les logos de l'application.
+
+Dans le fichier **Logos.tsx**, GSAP est utilisé pour créer deux genre d'animations :
+
+* **Une rotation continue** du logo React. Cette animation fait tourner le logo React de 360 degrés en boucle, elle crée un effet de rotation continue.
+
+* **Une transition horizontal** du logo. Cette animation déplace le logo de gauche à droite, elle crée un effet de balancement.
+
+Voici un exemple de l'utilisation de GSAP dans Logos.tsx :
+
+```ts
+const ctx = gsap.context(() => {
+  tl.current = gsap
+    .timeline()
+    .to(".logo.react", { rotate: 360, repeat: -1, duration: 20, ease: "linear" });
+  t2.current = gsap
+    .timeline({ delay: 1.5, yoyo: true })
+    .to(".logo", { x: -100 })
+    .to(".logo", { x: 100 })
+    .to(".logo", { x: 0 });
+}, el);
+```
+
+Dans le fichier Logos.tsx, nous utilisons **useRef** pour créer une référence à l'élément div qui contient les logos. Nous passons ensuite cette référence à GSAP pour créer les animations. Cela permet de contrôler avec précision quels éléments sont animés par GSAP.
+
+Voici comment les Refs sont utilisées dans Logos.tsx :
+
+```ts
+const el = useRef<HTMLDivElement>(null);
+
+// ...
+
+const ctx = gsap.context(() => {
+  // ...
+}, el);
 ```
 
 ## Contribuer
