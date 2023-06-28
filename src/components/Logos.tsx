@@ -7,11 +7,6 @@ import { gsap } from "gsap";
 
 export default function Logos() {
   const { config } = useAppConfig();
-  const [reactLogo, setReactLogo] = useState<string>("");
-
-  import(config.projectLogo).then(logo => {
-    setReactLogo(logo.default);
-  });
 
   const el = useRef<HTMLDivElement>(null);
   const tl = useRef({});
@@ -40,7 +35,7 @@ export default function Logos() {
       </a>
 
       <a href="https://react.dev" target="_blank">
-        <img src={reactLogo} className="logo react" alt="React logo" />
+        <img src={config.projectLogo} className="logo react" alt="React logo" />
       </a>
     </div>
   );
