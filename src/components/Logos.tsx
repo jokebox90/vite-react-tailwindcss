@@ -9,15 +9,9 @@ export default function Logos() {
   const { config } = useAppConfig();
   const [reactLogo, setReactLogo] = useState<string>("");
 
-  useLayoutEffect(() => {
-    async function imports() {
-      setReactLogo(
-        (await import(config.projectLogo /* @vite-ignore */)).default
-      );
-    }
-
-    imports();
-  }, [config.projectLogo]);
+  import(config.projectLogo).then(logo => {
+    setReactLogo(logo.default);
+  });
 
   const el = useRef<HTMLDivElement>(null);
   const tl = useRef({});
