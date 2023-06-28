@@ -1,6 +1,6 @@
 // src/components/Logos.tsx
 
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useAppConfig } from "../composables/appConfig";
 import viteLogo from "/vite.svg";
 import { gsap } from "gsap";
