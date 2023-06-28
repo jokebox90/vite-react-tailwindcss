@@ -29,10 +29,10 @@
   @apply animate-[spin_20s_linear_infinite];
 } */
 .logo:hover {
-  @apply drop-shadow-[0_25px_25px_#1d4ed8];
+  @apply drop-shadow-[0_0_35px_#1d4ed8];
 }
 .logo.react:hover {
-  @apply drop-shadow-[0_25px_25px_#06b6d4];
+  @apply drop-shadow-[0_0_35px_#06b6d4];
 }
 
 .card {
