@@ -92,7 +92,7 @@ main {
   /* Sizing */
   @apply w-screen h-max max-w-full;
   /* Spacing */
-  @apply m-0 px-10 lg:px-20;
+  @apply m-0 px-4 lg:px-10 xl:px-20;
   /* Flexbox & Grid */
   /* Borders */
   /* Backgrounds */
