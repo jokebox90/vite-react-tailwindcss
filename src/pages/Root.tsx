@@ -50,27 +50,29 @@ export default function Root(Props: AppProps) {
           </Navbar>
 
           <Landing className="bg-gradient-to-r from-primary-500 via-primary-400 to-primary-700">
-            <LandingSection
-              className="flex-1"
-              innerClass="justify-start items-center"
-            >
-              <div className="md:w-11/12 xl:w-4/5 2xl:w-full">
-                <LandingTitle className="underline underline-offset-8 text-accent-300">
-                  PetitBoutDeCloud
-                </LandingTitle>
+            <LandingSection>
+              <LandingTitle className="text-center underline underline-offset-8 text-accent-300">
+                PetitBoutDeCloud
+              </LandingTitle>
 
-                <LandingQuote
-                  className="text-stone-50"
-                  truncate={{
-                    length: 100,
-                  }}
-                >
-                  L’agence Web consciente des petits détails qui font les
-                  grandes différences
-                </LandingQuote>
-              </div>
+              <LandingQuote
+                className="text-stone-50 text-center"
+                truncate={{
+                  length: 100,
+                }}
+              >
+                L’agence Web consciente des petits détails qui font les grandes
+                différences
+              </LandingQuote>
+            </LandingSection>
+          </Landing>
+        </header>
 
-              <LandingDescription className="self-center flex items-center bg-stone-100 rounded-r-3xl">
+        <main className="main" id="main">
+          <div className="w-full grid lg:grid-cols-2 gap-8">
+            <div className="flex flex-col flex-wrap items-center justify-center">
+              <h2 className="mb-8 text-5xl font-display">World Wide Web</h2>
+              <p className="lg:text-xl font-semibold">
                 Notre équipe est dédiée à la création de projets Web sur mesure
                 pour les artisans, les boutiques et les organismes à Paris et en
                 Ile-De-France. Nous avons conçu pour vous approche progressive
@@ -81,10 +83,9 @@ export default function Root(Props: AppProps) {
                 des partenaires qui comprennent vos attentes et s'engagent à
                 créer un outil numérique qui favorise votre croissance et votre
                 visibilité en ligne.
-              </LandingDescription>
-            </LandingSection>
-
-            <LandingPoster className="self-center">
+              </p>
+            </div>
+            <div className="flex justify-center py-8 relative">
               <MobileDevice>
                 <StackedList>
                   {_.map(checkList.find(1)?.body, (item, index) => (
@@ -97,12 +98,9 @@ export default function Root(Props: AppProps) {
                   ))}
                 </StackedList>
               </MobileDevice>
-            </LandingPoster>
-            <LandingNextSection size="2x" />
-          </Landing>
-        </header>
+            </div>
+          </div>
 
-        <main className="main" id="main">
           <Outlet context={{ config: Props.config }} />
         </main>
 

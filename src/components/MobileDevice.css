@@ -2,8 +2,9 @@
 
 .mobile-device-jacket {
   /* Layout */
+  @apply relative;
   /* Sizing */
-  @apply max-w-sm max-h-[708px];
+  @apply w-80 h-[540px];
   /* Spacing */
   @apply mb-8;
   /* Flexbox & Grid */
@@ -189,7 +190,7 @@
 
 .mobile-device-scroller {
   /* Layout */
-  @apply fixed left-0 right-0 bottom-20;
+  @apply absolute left-0 right-0 bottom-4 hidden invisible;
   /* Sizing */
   /* Spacing */
   @apply mx-8 py-2;

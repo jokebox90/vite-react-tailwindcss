@@ -2,6 +2,7 @@
 
 .stacked-list {
   /* Layout */
+  @apply relative;
   /* Sizing */
   /* Spacing */
   /* Flexbox & Grid */

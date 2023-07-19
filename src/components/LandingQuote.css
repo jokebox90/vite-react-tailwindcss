@@ -3,9 +3,9 @@
 .landing-quote {
   /* Layout */
   /* Sizing */
+  @apply w-4/5 md:w-2/3;
   /* Spacing */
-  @apply mx-8 xl:mx-20;
-  @apply mb-8;
+  @apply mb-8 px-4;
   /* Flexbox & Grid */
   /* Borders */
   /* Backgrounds */
@@ -14,8 +14,8 @@
   /* Animation */
   /* Interactivity */
   /* Typo */
-  @apply text-xl lg:text-2xl xl:text-3xl 2xl:text-6xl;
-  @apply text-start font-display;
+  @apply text-2xl md:text-3xl xl:text-5xl 2xl:text-7xl;
+  @apply text-center font-display;
   line-height: 1.5;
   /* Tables */
 }
