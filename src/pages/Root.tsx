@@ -76,8 +76,8 @@ export default function Root(Props: AppProps) {
         </header>
 
         <main id="main" className="pt-20">
-          <div className="w-full grid lg:grid-cols-2 gap-8">
-            <div className="py-8 flex flex-col flex-wrap items-center justify-center gap-8">
+          <div className="w-full flex lg:grid lg:grid-cols-2 gap-8">
+            <div className="py-8 flex flex-col flex-wrap items-center justify-start gap-8">
               <Icon icon={["fas", "globe"]} size="4x" className="text-primary-500"></Icon>
               <h2 className="text-5xl font-display">Hello, World !</h2>
               <p className="lg:text-xl font-semibold">
