@@ -5,6 +5,7 @@ import _ from "lodash-es";
 import { Outlet } from "react-router-dom";
 import useCheckListProvider from "../composables/checkListProvider";
 import { Suspense, lazy } from "react";
+import Icon from "../components/Icon";
 
 type AppProps = {
   config: object;
@@ -64,20 +65,27 @@ export default function Root(Props: AppProps) {
                 L’agence Web consciente des petits détails qui font les grandes
                 différences
               </LandingQuote>
+              <div className="animate-bounce" onClick={() => document.getElementById("main")?.scrollIntoView({
+                behavior: "smooth"
+              })}>
+
+              <Icon icon={["fas", "play-circle"]} size="2x" className="rotate-90 text-white"></Icon>
+              </div>
             </LandingSection>
           </Landing>
         </header>
 
-        <main id="main">
+        <main id="main" className="pt-20">
           <div className="w-full grid lg:grid-cols-2 gap-8">
-            <div className="flex flex-col flex-wrap items-center justify-center">
-              <h2 className="mb-8 text-5xl font-display">World Wide Web</h2>
+            <div className="py-8 flex flex-col flex-wrap items-center justify-center gap-8">
+              <Icon icon={["fas", "globe"]} size="4x" className="text-primary-500"></Icon>
+              <h2 className="text-5xl font-display">Hello, World !</h2>
               <p className="lg:text-xl font-semibold">
                 Notre équipe est dédiée à la création de projets Web sur mesure
                 pour les artisans, les boutiques et les organismes à Paris et en
                 Ile-De-France. Nous avons conçu pour vous approche progressive
-                et consciencieuse qui prend en compte votre rythme et vos
-                attentes. De cette façon, nous pouvons développer le site
+                et consciencieuse qui prend en compte votre rythme et soin de vos
+                demandes. De cette façon, nous pouvons développer le site
                 internet et/ou l’application mobile qui reflète votre vision et
                 vos valeurs. En nous confiant votre projet, vous travaillez avec
                 des partenaires qui comprennent vos attentes et s'engagent à
