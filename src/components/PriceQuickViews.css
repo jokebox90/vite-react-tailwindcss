@@ -1,0 +1,47 @@
+/* src/components/PriceQuickViews.css */
+
+.price-quick-views {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex flex-col;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.price-quick-views-title {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-5xl font-display;
+  /* Tables */
+}
+
+.price-quick-views-comment {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply mt-8;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-base font-sans;
+  /* Tables */
+}

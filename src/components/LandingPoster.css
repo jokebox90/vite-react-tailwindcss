@@ -1,0 +1,155 @@
+/* src/components/Landing.css */
+
+.landing-poster {
+  /* Layout */
+  /* @apply z-10 md:absolute bottom-20 right-0; */
+  /* Sizing */
+  @apply w-max h-max;
+  /* Spacing */
+  @apply p-4 pt-8 md:px-8 lg:px-20 lg:py-10;
+  @apply 2xl:px-40 2xl:py-10;
+  /* Flexbox & Grid */
+  @apply flex flex-row;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-inner {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  @apply bg-transparent;
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-t {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-start justify-center;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-tr {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-start justify-end;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-tl {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-start justify-start;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-b {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-end justify-center;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-br {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-end justify-end;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-bl {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-end justify-start;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-r {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-center justify-end;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-poster-l {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply items-center justify-start;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

@@ -1,0 +1,31 @@
+/* src/components/StackedList.css */
+
+.stacked-list {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.stacked-list-inner {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-1 flex flex-row flex-wrap items-start justify-start;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

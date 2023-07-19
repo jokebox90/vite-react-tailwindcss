@@ -1,0 +1,16 @@
+/* src/components/LandingNextSection.css */
+
+.landing-next-section {
+  @apply hidden invisible md:visible md:absolute z-30;
+  @apply w-full h-max;
+  @apply pt-2;
+  @apply self-end flex justify-center items-start;
+  @apply bg-secondary-400 hover:bg-secondary-500;
+  @apply cursor-pointer;
+}
+
+.landing-next-section-inner {
+  @apply px-2;
+  @apply self-end;
+  @apply border-b-2 border-white;
+}

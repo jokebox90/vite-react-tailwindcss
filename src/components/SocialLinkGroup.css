@@ -1,0 +1,5 @@
+/* src/components/SocialLinkGroup.css */
+
+.social-link-group {
+  @apply mx-auto flex flex-wrap justify-center gap-2 w-28 lg:w-full;
+}

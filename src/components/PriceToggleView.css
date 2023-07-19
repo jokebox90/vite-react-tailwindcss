@@ -1,0 +1,75 @@
+/* src/components/PriceToggleView.css */
+
+.price-toggle-view {
+  /* Layout */
+  @apply form-control;
+  /* Sizing */
+  @apply w-max;
+  /* Spacing */
+  @apply mt-8;
+  /* Flexbox & Grid */
+  @apply items-center self-center;
+  /* Borders */
+  @apply border rounded-full;
+  /* Backgrounds */
+  @apply bg-accent-500;
+  /* Effects */
+  @apply shadow-md;
+  /* Animation */
+  @apply transition-all hover:-translate-y-1;
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.price-toggle-view-label {
+  /* Layout */
+  @apply label;
+  /* Sizing */
+  @apply h-11;
+  /* Spacing */
+  @apply px-6;
+  /* Flexbox & Grid */
+  @apply gap-4;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  @apply cursor-pointer;
+  /* Typo */
+  /* Tables */
+}
+
+.price-toggle-view-text {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply font-bold text-sm text-accent-50;
+  /* Tables */
+}
+
+.price-toggle-view-toggle {
+  /* Layout */
+  @apply toggle;
+  /* Sizing */
+  @apply toggle-md;
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  @apply border-accent-400;
+  /* Backgrounds */
+  @apply bg-accent-700;
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

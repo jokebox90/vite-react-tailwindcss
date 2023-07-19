@@ -1,0 +1,75 @@
+/* src/components/FooterGreetings.css */
+
+.footer-greetings {
+  /* Layout */
+  /* Sizing */
+  @apply w-full;
+  /* Spacing */
+  @apply -mt-32 md:mt-0 lg:-mt-32 xl:-mt-40;
+  /* Flexbox & Grid */
+  @apply row-start-1 md:row-start-2 lg:row-start-1;
+  @apply col-span-full md:col-span-2 md:col-start-2 lg:col-start-auto;
+  @apply flex flex-row flex-wrap gap-8;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.footer-greetings-inner {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply p-4 xl:p-8;
+  /* Flexbox & Grid */
+  @apply flex flex-col gap-4;
+  /* Borders */
+  @apply rounded-3xl border border-secondary-200;
+  /* Backgrounds */
+  @apply bg-secondary-300;
+  /* Effects */
+  @apply shadow-lg;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.footer-greetings-logo {
+  /* Layout */
+  /* Sizing */
+  @apply w-24 h-24;
+  /* Spacing */
+  @apply mx-auto p-4;
+  /* Flexbox & Grid */
+  /* Borders */
+  @apply border border-stone-300 rounded-full;
+  /* Backgrounds */
+  @apply bg-stone-50;
+  /* Effects */
+  @apply shadow-md;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.footer-greetings-message {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-1;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply align-middle text-center;
+  @apply text-secondary-950 text-base;
+  /* Tables */
+}

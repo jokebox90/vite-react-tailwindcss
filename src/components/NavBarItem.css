@@ -1,0 +1,17 @@
+/* src/components/NavBar.css */
+
+.navbar-item-link {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  @apply bg-primary-500;
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-white font-bold;
+  /* Tables */
+}

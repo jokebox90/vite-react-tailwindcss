@@ -1,0 +1,20 @@
+/* src/components/Footer.css */
+
+.footer {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply mt-20 px-10 py-20;
+  /* Flexbox & Grid */
+  @apply md:grid-cols-4;
+  /* @apply place-items-start justify-center items-start place-content-stretch; */
+  /* Borders */
+  /* Backgrounds */
+  @apply bg-stone-800;
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-start;
+  /* Tables */
+}

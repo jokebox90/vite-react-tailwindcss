@@ -1,0 +1,21 @@
+/* src/components/LandingQuote.css */
+
+.landing-quote {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply mx-8 xl:mx-20;
+  @apply mb-8;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  text-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-xl lg:text-2xl xl:text-3xl 2xl:text-6xl;
+  @apply text-start font-display;
+  line-height: 1.5;
+  /* Tables */
+}

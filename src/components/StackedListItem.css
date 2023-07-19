@@ -1,0 +1,50 @@
+/* src/components/StackedListItem.css */
+
+.stacked-list-item {
+  /* Layout */
+  /* Sizing */
+  @apply w-full;
+  /* Spacing */
+  @apply pt-2 pb-3;
+  /* Flexbox & Grid */
+  /* Borders */
+  @apply border-b border-stone-400;
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-xs font-bold text-start;
+  /* Tables */
+}
+
+.stacked-list-item-icon {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply pr-4;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-accent-500;
+  /* Tables */
+}
+
+.stacked-list-item-text {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-stone-700;
+  /* Tables */
+}

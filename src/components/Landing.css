@@ -1,0 +1,34 @@
+/* src/components/Landing.css */
+
+.landing {
+  /* Layout */
+  @apply relative;
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-1 flex-col flex-wrap;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-inner {
+  /* Layout */
+  @apply relative;
+  /* Sizing */
+  @apply min-h-screen lg:h-screen;
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-1 flex flex-row flex-wrap;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

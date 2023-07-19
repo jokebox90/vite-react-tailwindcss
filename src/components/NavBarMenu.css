@@ -1,0 +1,79 @@
+/* src/components/NavBar.css */
+
+.navbar-menu {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-none;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.navbar-menu-inner {
+  /* Layout */
+  @apply menu menu-horizontal;
+  /* Sizing */
+  /* Spacing */
+  @apply px-1;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.navbar-brand {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-none;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.navbar-brand-link {
+  /* Layout */
+  @apply btn;
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  @apply btn-ghost;
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply normal-case text-xl text-stone-950;
+  /* Tables */
+}
+
+.navbar-item-link {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+  @apply bg-primary-500 text-white font-bold;
+}

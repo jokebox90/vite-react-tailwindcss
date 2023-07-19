@@ -1,0 +1,18 @@
+/* src/components/PriceViewGroup.css */
+
+.price-view-group {
+  /* Layout */
+  /* Sizing */
+  @apply w-full;
+  /* Spacing */
+  @apply mt-8;
+  /* Flexbox & Grid */
+  @apply flex flex-row justify-center gap-1 md:gap-2;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

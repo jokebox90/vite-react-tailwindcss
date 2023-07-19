@@ -1,0 +1,95 @@
+/* src/components/Isotope.css */
+
+.isotope {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply -mr-4;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.isotope-sizer,
+.isotope-item {
+  /* Layout */
+  /* Sizing */
+  @apply w-80 md:w-1/2 lg:w-1/3 xl:w-1/4 2xl:w-1/5;
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.isotope-inner {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply mr-4 mb-8;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+/* wide */
+.isotope-item-large {
+  /* Layout */
+  /* Sizing */
+  @apply w-1/2;
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+/* medium */
+.isotope-item-medium {
+  /* Layout */
+  /* Sizing */
+  @apply w-1/3;
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+/* small */
+.isotope-item-small {
+  /* Layout */
+  /* Sizing */
+  @apply w-1/5;
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

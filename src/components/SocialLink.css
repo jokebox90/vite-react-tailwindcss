@@ -1,0 +1,25 @@
+/* src/components/SocialLink.css */
+
+.social-link {
+  @apply w-12 h-12 p-2 bg-gradient-to-br rounded-full shadow-lg hover:shadow-sm text-white transition-all delay-75 duration-300;
+}
+
+.social-link-default {
+  @apply from-stone-400 via-stone-700 to-stone-600 border border-stone-500 hover:via-stone-600 hover:to-stone-500 hover:border-stone-400;
+}
+
+.social-link-blue {
+  @apply from-blue-400 via-blue-700 to-blue-600 border border-blue-500 hover:via-blue-600 hover:to-blue-500 hover:border-blue-400;
+}
+
+.social-link-pink {
+  @apply from-pink-400 via-pink-700 to-pink-600 border border-pink-500 hover:via-pink-600 hover:to-pink-500 hover:border-pink-400;
+}
+
+.social-link-cyan {
+  @apply from-cyan-400 via-cyan-700 to-cyan-600 border border-cyan-500 hover:via-cyan-600 hover:to-cyan-500 hover:border-cyan-400;
+}
+
+.social-link-sky {
+  @apply from-sky-400 via-sky-700 to-sky-600 border border-sky-500 hover:via-sky-600 hover:to-sky-500 hover:border-sky-400;
+}

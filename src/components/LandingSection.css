@@ -1,0 +1,34 @@
+/* src/components/Landing.css */
+
+.landing-section {
+  /* Layout */
+  @apply z-0;
+  /* Sizing */
+  /* @apply lg:h-full; */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.landing-section-inner {
+  /* Layout */
+  /* Sizing */
+  @apply h-full;
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-1 flex flex-wrap;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

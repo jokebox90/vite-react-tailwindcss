@@ -1,0 +1,19 @@
+/* src/components/LandingDescription.css */
+
+.landing-description {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply mb-40;
+  @apply px-8 xl:px-20 py-8;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-sm lg:text-base xl:text-xl 2xl:text-2xl;
+  @apply text-start font-sans font-semibold;
+  /* Tables */
+}

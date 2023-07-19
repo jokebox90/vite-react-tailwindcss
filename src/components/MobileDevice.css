@@ -1,0 +1,315 @@
+/* src/components/MobileDevice.css */
+
+.mobile-device-jacket {
+  /* Layout */
+  /* Sizing */
+  @apply max-w-sm max-h-[708px];
+  /* Spacing */
+  @apply mb-8;
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  @apply rotate-6;
+  /* Interactivity */
+  @apply overflow-hidden;
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply px-2 pt-4;
+  /* Flexbox & Grid */
+  @apply flex flex-col;
+  /* Borders */
+  @apply rounded-3xl;
+  /* Backgrounds */
+  @apply bg-stone-100;
+  /* Effects */
+  @apply shadow-2xl;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-screen {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  @apply border border-stone-200;
+  /* Backgrounds */
+  @apply bg-gradient-to-tl from-lime-100 via-white to-primary-200;
+  /* Effects */
+  @apply shadow-inner;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-taskbar {
+  /* Layout */
+  /* Sizing */
+  @apply w-full;
+  /* Spacing */
+  @apply px-2;
+  /* Flexbox & Grid */
+  @apply inline-flex gap-2;
+  /* Borders */
+  /* Backgrounds */
+  @apply bg-stone-700;
+  /* Effects */
+  @apply transition-all delay-75 duration-1000;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-xs text-white;
+  /* Tables */
+}
+
+.mobile-device-divider {
+  /* Layout */
+  /* Sizing */
+  @apply w-0;
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-1;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-text-group {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply inline-flex gap-2;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-icon-group {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply inline-flex gap-1;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-ui {
+  /* Layout */
+  @apply relative;
+  /* Sizing */
+  @apply w-80 h-96;
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex flex-row;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  @apply overflow-y-auto;
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-ui-inner {
+  /* Layout */
+  @apply relative;
+  /* Sizing */
+  /* Spacing */
+  @apply px-2;
+  /* Flexbox & Grid */
+  @apply flex-1 flex flex-row flex-wrap justify-start;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-ui-start {
+  /* Layout */
+  /* Sizing */
+  @apply h-0;
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  font-size: 0;
+  line-height: 0;
+  /* Tables */
+}
+
+.mobile-device-ui-end {
+  /* Layout */
+  /* Sizing */
+  @apply h-16;
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-scroller {
+  /* Layout */
+  @apply fixed left-0 right-0 bottom-20;
+  /* Sizing */
+  /* Spacing */
+  @apply mx-8 py-2;
+  /* Flexbox & Grid */
+  @apply flex justify-center;
+  /* Borders */
+  @apply rounded-lg;
+  @apply border border-stone-300;
+  /* Backgrounds */
+  @apply bg-stone-100;
+  /* Effects */
+  @apply transition-all delay-75 duration-300;
+  @apply bg-opacity-50 hover:bg-opacity-80;
+  /* Animation */
+  /* Interactivity */
+  @apply cursor-pointer;
+  /* Typo */
+  @apply text-accent-400 hover:text-accent-500;
+  /* Tables */
+}
+
+.mobile-device-scroller-icon {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  @apply transition-all delay-150 duration-1000;
+  @apply -rotate-90;
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-scroller-icon-reverse {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  @apply rotate-90;
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-cta {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply pt-4 pb-2;
+  /* Flexbox & Grid */
+  @apply flex justify-center;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.mobile-device-button {
+  /* Layout */
+  @apply btn;
+  /* Sizing */
+  @apply w-48 h-auto;
+  /* Spacing */
+  @apply px-4 py-2;
+  /* Flexbox & Grid */
+  @apply justify-between;
+  /* Borders */
+  @apply rounded-full;
+  /* Backgrounds */
+  @apply bg-accent-400 hover:bg-accent-500;
+  /* Effects */
+  @apply shadow-md hover:shadow-none;
+  /* Animation */
+  @apply hover:translate-y-1;
+  /* Interactivity */
+  /* Typo */
+  @apply text-accent-100;
+  /* Tables */
+}
+
+.mobile-device-button-text {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex-1;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-center font-bold;
+  /* Tables */
+}
+
+.mobile-device-button-icon {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  @apply pl-2;
+  /* Flexbox & Grid */
+  /* Borders */
+  @apply border-l border-accent-300;
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-xl;
+  /* Tables */
+}

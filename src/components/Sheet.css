@@ -1,0 +1,103 @@
+/* src/components/Sheet.css */
+
+.sheet {
+  /* Layout */
+  /* Sizing */
+  @apply h-max;
+  /* Spacing */
+  @apply px-4 py-8;
+  /* Flexbox & Grid */
+  /* Borders */
+  @apply border border-secondary-300 rounded-lg hover:border-secondary-400;
+  /* Backgrounds */
+  /* Effects */
+  @apply shadow-md hover:shadow-xl;
+  /* Animation */
+  @apply transition-all delay-75 duration-300;
+  @apply hover:-translate-y-1;
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.sheet-inner {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex flex-col gap-2;
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.sheet-heading {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-start text-sm font-bold;
+  font-variant: small-caps;
+  /* Tables */
+}
+
+.sheet-icon {
+  /* Layout */
+  /* Sizing */
+  @apply w-16 h-20;
+  /* Spacing */
+  @apply -mt-12 mx-4 pb-4;
+  /* Flexbox & Grid */
+  @apply flex items-end justify-center;
+  /* Borders */
+  @apply rounded-b-2xl rounded-t-lg;
+  /* Backgrounds */
+  @apply bg-secondary-500;
+  /* Effects */
+  @apply shadow-sm;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-white text-3xl;
+  /* Tables */
+}
+
+.sheet-body {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-sm text-start;
+  /* Tables */
+}
+
+.sheet-footer {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-sm text-start;
+  /* Tables */
+}

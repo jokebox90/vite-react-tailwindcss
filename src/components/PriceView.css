@@ -1,0 +1,170 @@
+.price-view  {
+  /* Layout */
+  @apply relative;
+  /* Sizing */
+  @apply lg:w-40 lg:h-40;
+  /* Spacing */
+  @apply p-1 px-2 lg:p-2;
+  /* Flexbox & Grid */
+  @apply flex items-center justify-center;
+  /* Borders */
+  @apply border-2 border-transparent;
+  /* Backgrounds */
+  @apply lg:bg-neutral-600 lg:hover:bg-neutral-500;
+  /* Effects */
+  @apply rounded-3xl lg:rounded-full lg:shadow-md;
+  /* Animation */
+  @apply transition-all;
+  @apply hover:-translate-y-1;
+  /* Interactivity */
+  @apply cursor-pointer;
+  /* Typo */
+  @apply text-neutral-50 hover:text-neutral-300;
+  /* Tables */
+}
+
+.price-view-inner {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  @apply flex flex-col items-center gap-1;
+  /* Borders */
+  @apply rounded-full;
+  /* Backgrounds */
+  /* Effects */
+  @apply shadow-md;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.price-view-quote {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-sm font-bold;
+  /* Tables */
+}
+
+.price-view-title {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-lg lg:text-3xl font-display;
+  /* Tables */
+}
+
+.price-view-comment {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply font-sans font-bold text-xs;
+  /* Tables */
+}
+
+.price-view-accent {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  @apply bg-accent-300 hover:bg-accent-500;
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply text-neutral-200 hover:text-neutral-50;
+  /* Tables */
+}
+
+.price-view-accent.price-view-active {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  @apply border-accent-400;
+  /* Backgrounds */
+  @apply bg-accent-500;
+  /* Effects */
+  /* Animation */
+  @apply -translate-y-1;
+  /* Interactivity */
+  @apply cursor-default;
+  /* Typo */
+  @apply text-neutral-50;
+  /* Tables */
+}
+
+.price-view-circle {
+  /* Layout */
+  @apply absolute top-2 right-4;
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  @apply opacity-0 text-opacity-0;
+  /* Animation */
+  @apply transition-all delay-75 duration-300;
+  /* Interactivity */
+  /* Typo */
+  @apply text-green-600;
+  /* Tables */
+}
+
+.price-view:hover .price-view-circle {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  @apply opacity-100 text-opacity-100;
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}
+
+.price-view-active .price-view-circle {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  @apply opacity-100 text-opacity-100;
+  /* Animation */
+  @apply first:animate-ping;
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+}

@@ -1,0 +1,33 @@
+/* src/components/NavBar.css */
+
+.navbar-brand {
+  /* Layout */
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  /* Tables */
+  @apply flex-none;
+}
+
+.navbar-brand-link {
+  /* Layout */
+  @apply btn;
+  /* Sizing */
+  /* Spacing */
+  /* Flexbox & Grid */
+  /* Borders */
+  /* Backgrounds */
+  @apply btn-ghost;
+  /* Effects */
+  /* Animation */
+  /* Interactivity */
+  /* Typo */
+  @apply normal-case text-xl text-stone-950;
+  /* Tables */
+}
