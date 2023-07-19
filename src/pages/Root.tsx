@@ -18,13 +18,13 @@ export default function Root(Props: AppProps) {
   const FooterLink = lazy(() => import("../components/FooterLink"));
   const FooterLinks = lazy(() => import("../components/FooterLinks"));
   const Landing = lazy(() => import("../components/Landing"));
-  const LandingDescription = lazy(
-    () => import("../components/LandingDescription")
-  );
-  const LandingNextSection = lazy(
-    () => import("../components/LandingNextSection")
-  );
-  const LandingPoster = lazy(() => import("../components/LandingPoster"));
+  // const LandingDescription = lazy(
+  //   () => import("../components/LandingDescription")
+  // );
+  // const LandingNextSection = lazy(
+  //   () => import("../components/LandingNextSection")
+  // );
+  // const LandingPoster = lazy(() => import("../components/LandingPoster"));
   const LandingQuote = lazy(() => import("../components/LandingQuote"));
   const LandingSection = lazy(() => import("../components/LandingSection"));
   const LandingTitle = lazy(() => import("../components/LandingTitle"));

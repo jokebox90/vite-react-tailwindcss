@@ -1,6 +1,5 @@
 // src/components/Landing.tsx
 
-import _ from "lodash-es";
 import { ReactElement, ReactNode } from "react";
 import "./LandingSection.css";
 
