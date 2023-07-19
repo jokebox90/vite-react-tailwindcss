@@ -68,7 +68,7 @@ export default function Root(Props: AppProps) {
           </Landing>
         </header>
 
-        <main className="main" id="main">
+        <main id="main">
           <div className="w-full grid lg:grid-cols-2 gap-8">
             <div className="flex flex-col flex-wrap items-center justify-center">
               <h2 className="mb-8 text-5xl font-display">World Wide Web</h2>

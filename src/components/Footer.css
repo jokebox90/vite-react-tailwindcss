@@ -3,6 +3,7 @@
 .footer {
   /* Layout */
   /* Sizing */
+  @apply relative;
   /* Spacing */
   @apply mt-20 px-10 py-20;
   /* Flexbox & Grid */
