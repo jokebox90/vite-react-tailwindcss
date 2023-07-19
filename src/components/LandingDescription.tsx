@@ -22,7 +22,7 @@ interface LandingDescriptionProps {
 
 export default function LandingDescription(Props: LandingDescriptionProps) {
   return (
-    <p className={_.trim(`landing-description ${Props.className || ""}`)}>
+    <p className={`landing-description ${Props.className || ""}`}>
       {Children.map(Props.children, (child) =>
         typeof child === "string"
           ? _.truncate(child, Props.truncate || truncateOptions)

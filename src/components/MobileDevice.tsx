@@ -131,7 +131,7 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
             <span className="mobile-device-button-text">Prendre RDV</span>
 
             <span className="mobile-device-button-icon">
-              <FontAwesomeIcon icon={["far", "clock"]} />
+              <FontAwesomeIcon icon={["fas", "clock"]} />
             </span>
           </button>
         </div>

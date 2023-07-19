@@ -1,6 +1,5 @@
 // src/Root.tsx
 
-import _ from "lodash-es";
 import { Children, ReactNode } from "react";
 
 interface FooterLinksProps {
@@ -12,11 +11,9 @@ interface FooterLinksProps {
 export default function FooterLinks(Props: FooterLinksProps) {
   return (
     <div
-      className={_.trim(
-        `md:row-start-1 col-span-full md:col-span-1 grid grid-cols-1 gap-y-4 gap-4 place-items-start ${
-          Props.className || ""
-        }`
-      )}
+      className={`md:row-start-1 col-span-full md:col-span-1 grid grid-cols-1 gap-y-4 gap-4 place-items-start ${
+        Props.className || ""
+      }`}
     >
       <span className="footer-title text-stone-300">{Props.title}</span>
       {Children.map(Props.children, (child) => {

@@ -2,7 +2,6 @@
 
 import { IconProp, SizeProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import _ from "lodash-es";
 
 export default function Icon(Props: {
   className?: string;
@@ -12,7 +11,9 @@ export default function Icon(Props: {
 }) {
   return (
     <span
-      className={_.trim(`icon flex justify-center items-center ${Props.className || ""}`)}
+      className={`icon flex justify-center items-center ${
+        Props.className || ""
+      }`}
       onClick={Props.onClick}
     >
       <FontAwesomeIcon icon={Props.icon} size={Props.size || "1x"} />

@@ -1,7 +1,6 @@
 // src/components/LandingNextSection.tsx
 
 import { IconProp, SizeProp } from "@fortawesome/fontawesome-svg-core";
-import _ from "lodash-es";
 import Icon from "./Icon";
 import "./LandingNextSection.css";
 import { useRef } from "react";
@@ -25,7 +24,7 @@ export default function LandingNextSection(Props: LandingNextSectionProps) {
   return (
     <div
       ref={buttonRef}
-      className={_.trim(`landing-next-section ${Props.className || ""}`)}
+      className={`landing-next-section ${Props.className || ""}`}
       onClick={handleClick}
     >
       <div className="landing-next-section-inner">
