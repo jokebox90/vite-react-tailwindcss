@@ -43,7 +43,7 @@ export default function Home() {
   };
 
   return (
-    <div className="w-full flex flex-col px-4 md:px-10 xl:px-20 py-10 shadow-md border-2 border-stone-300 rounded-2xl bg-stone-100">
+    <div className="w-full flex flex-col px-4 lg:px-10 xl:px-20 py-10 shadow-md border-2 border-stone-300 rounded-2xl bg-stone-100">
       <PriceQuickViews
         title="Forfaits"
         comment="Engagement sur un mois ou sur une année et surtout à volonté"
