@@ -3,7 +3,6 @@
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash-es";
-import { ReactNode } from "react";
 import "./StackedListItem.css";
 
 interface TruncateOptions {

@@ -1,7 +1,7 @@
 // src/components/PriceQuickViews.tsx
 
 import _ from "lodash-es";
-import { ReactElement, ReactNode, useState } from "react";
+import { ReactElement, ReactNode } from "react";
 import "./PriceViewGroup.css";
 
 type PriceQuickViewsProps = {

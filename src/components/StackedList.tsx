@@ -1,7 +1,5 @@
 // src/components/StackedList.tsx
 
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import _ from "lodash-es";
 import { Children, ReactNode, cloneElement, isValidElement } from "react";
 import "./StackedList.css";

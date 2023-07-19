@@ -1,7 +1,7 @@
 // src/components/PriceToggleView.tsx
 
 import _ from "lodash-es";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./PriceToggleView.css";
 
 type PriceToggleViewProps = {

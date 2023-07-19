@@ -8,11 +8,9 @@ import PriceToggleView from "../components/PriceToggleView";
 import PriceView from "../components/PriceView";
 import PriceViewGroup from "../components/PriceViewGroup";
 import Sheet from "../components/Sheet";
-import { useAppConfig } from "../composables/appConfig";
 import useCardProvider from "../composables/cardProvider";
 
 export default function Home() {
-  const { config } = useAppConfig();
   const cardProvider = useCardProvider();
 
   const [state, setState] = useState({
