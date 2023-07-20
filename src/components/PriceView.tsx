@@ -8,7 +8,7 @@ import { Fragment, useRef } from "react";
 interface PriceQuickViewsProps {
   quote?: string;
   title?: string;
-  comment?: string;
+  content?: string;
   active?: boolean;
   onClick?: () => void;
   className?: string;
@@ -21,7 +21,7 @@ interface PriceQuickViewsProps {
 export default function PriceView({
   quote,
   title,
-  comment,
+  content,
   active,
   onClick,
   className: argClass,
@@ -41,7 +41,7 @@ export default function PriceView({
   titleClass.splice(0, 0, "price-view-title");
   innerClass.splice(0, 0, "price-view-inner");
   quoteClass.splice(0, 0, "price-view-quote");
-  commentClass.splice(0, 0, "price-view-comment");
+  commentClass.splice(0, 0, "price-view-content");
 
   const priceViewRef = useRef({} as HTMLDivElement);
 
@@ -76,7 +76,7 @@ export default function PriceView({
           </div>
           <h4 className={_.join(quoteClass, " ")}>{quote}</h4>
           <h5 className={_.join(titleClass, " ")}>{title}</h5>
-          <p className={_.join(commentClass, " ")}>{comment}</p>
+          <p className={_.join(commentClass, " ")}>{content}</p>
         </div>
       </div>
     </Fragment>

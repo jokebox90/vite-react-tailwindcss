@@ -46,7 +46,7 @@
   /* Borders */
   @apply border border-stone-200;
   /* Backgrounds */
-  @apply bg-gradient-to-tl from-lime-100 via-white to-primary-200;
+  @apply bg-gradient-to-tl from-secondary-100 via-white to-primary-200;
   /* Effects */
   @apply shadow-inner;
   /* Animation */
