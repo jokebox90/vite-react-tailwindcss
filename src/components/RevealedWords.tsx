@@ -26,7 +26,10 @@ export default function RevealedWords(Props: RevealedWordsProps) {
             setDisplayWord((prev) => prev + Props.words[wordIndex][charIndex]);
             setCharIndex((prev) => prev + 1);
             setDelay(50);
-          } else if (!isDeleting && charIndex === Props.words[wordIndex].length) {
+          } else if (
+            !isDeleting &&
+            charIndex === Props.words[wordIndex].length
+          ) {
             setIsDeleting(true);
             setDelay(2500);
           } else if (isDeleting && displayWord.length > 0) {
@@ -43,7 +46,9 @@ export default function RevealedWords(Props: RevealedWordsProps) {
       );
     }
 
-    return () => timeID && clearTimeout(timeID);
+    return () => {
+      timeID && clearTimeout(timeID);
+    };
   }, [wordIndex, charIndex, isDeleting, displayWord, delay, Props.words]);
 
   return (

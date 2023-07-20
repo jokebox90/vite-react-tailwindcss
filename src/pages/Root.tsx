@@ -1,12 +1,10 @@
 // src/Root.tsx
 
-import { IconName } from "@fortawesome/fontawesome-svg-core";
 import _ from "lodash-es";
 import { Outlet } from "react-router-dom";
-import useCheckListProvider from "../composables/checkListProvider";
-import { Suspense, lazy, useEffect, useState } from "react";
+import { Suspense, lazy } from "react";
 import Icon from "../components/Icon";
-import Main from "../components/Main";
+import SEO from "../components/SEO";
 
 type AppProps = {
   config: object;
@@ -30,6 +28,11 @@ export default function Root(Props: AppProps) {
 
   return (
     <div data-theme="owner" className="max-w-screen bg-stone-200">
+      <SEO
+        title="PetitBoutDeCloud"
+        content="L’agence Web consciente des petits détails qui font les grandes différences"
+      />
+
       <Suspense fallback={<div>Page is Loading...</div>}>
         <header className="header dark:header-dark">
           <Navbar>
