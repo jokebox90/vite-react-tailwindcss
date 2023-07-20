@@ -9,6 +9,14 @@ export default {
     extend: {
       fontFamily: {
         display: "Ultra",
+        ubuntu: "Ubunutu",
+        roboto: "Roboto",
+        titilium: "Titillium Web",
+        "source": "Source Sans Pro",
+        "source-code": "Source Code Pro",
+        bree: "Bree Serif",
+        noto: "Noto Sans",
+        "noto-serif": "Noto Serif",
       },
       colors: {
         primary: {
