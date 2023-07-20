@@ -35,7 +35,6 @@ body {
   /* Typo */
   @apply text-zinc-950 dark:text-zinc-50;
   /* Tables */
-
 }
 
 a {
@@ -102,4 +101,27 @@ main {
   /* Interactivity */
   /* Typo */
   /* Tables */
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes blink {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
