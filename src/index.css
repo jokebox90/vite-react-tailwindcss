@@ -27,13 +27,13 @@ body {
   /* Flexbox & Grid */
   /* Borders */
   /* Backgrounds */
-  @apply bg-zinc-200 dark:bg-zinc-900;
+  @apply bg-light-200 dark:bg-dark-300;
   /* Effects */
   /* Animation */
   @apply transition delay-100 duration-1000;
   /* Interactivity */
   /* Typo */
-  @apply text-zinc-950 dark:text-zinc-50;
+  @apply text-dark-300 dark:text-light;
   /* Tables */
 }
 
@@ -73,15 +73,15 @@ header {
   @apply flex-col items-start justify-start;
   /* Borders */
   /* Backgrounds */
-  @apply bg-zinc-300;
-  @apply dark:bg-zinc-800;
+  @apply bg-light-300;
+  @apply dark:bg-dark-200;
   /* Effects */
   @apply transition delay-100 duration-1000;
   /* Animation */
   /* Interactivity */
   /* Typo */
-  @apply text-zinc-950;
-  @apply dark:text-zinc-50;
+  @apply text-dark-300;
+  @apply dark:text-light;
   /* Tables */
 }
 
@@ -95,7 +95,7 @@ main {
   /* Flexbox & Grid */
   /* Borders */
   /* Backgrounds */
-  @apply bg-stone-200;
+  @apply bg-light-200;
   /* Effects */
   /* Animation */
   /* Interactivity */

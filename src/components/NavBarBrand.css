@@ -28,6 +28,6 @@
   /* Animation */
   /* Interactivity */
   /* Typo */
-  @apply normal-case text-xl text-stone-950;
+  @apply normal-case text-xl text-dark-300;
   /* Tables */
 }

@@ -10,7 +10,7 @@
   /* Borders */
   @apply border-2 border-transparent;
   /* Backgrounds */
-  @apply lg:bg-neutral-600 lg:hover:bg-neutral-500;
+  @apply lg:bg-dark-100 lg:hover:bg-dark;
   /* Effects */
   @apply rounded-3xl lg:rounded-full lg:shadow-md;
   /* Animation */
@@ -19,7 +19,7 @@
   /* Interactivity */
   @apply cursor-pointer;
   /* Typo */
-  @apply text-neutral-50 hover:text-neutral-300;
+  @apply text-light hover:text-light-300;
   /* Tables */
 }
 
@@ -97,7 +97,7 @@
   /* Animation */
   /* Interactivity */
   /* Typo */
-  @apply text-neutral-200 hover:text-neutral-50;
+  @apply text-light-200 hover:text-light;
   /* Tables */
 }
 
@@ -116,7 +116,7 @@
   /* Interactivity */
   @apply cursor-default;
   /* Typo */
-  @apply text-neutral-50;
+  @apply text-light;
   /* Tables */
 }
 

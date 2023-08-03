@@ -8,7 +8,7 @@
   /* Flexbox & Grid */
   /* Borders */
   /* Backgrounds */
-  @apply bg-stone-50;
+  @apply bg-light;
   /* Effects */
   /* Animation */
   /* Interactivity */
@@ -89,7 +89,7 @@
   /* Animation */
   /* Interactivity */
   /* Typo */
-  @apply normal-case text-xl text-stone-950;
+  @apply normal-case text-xl text-dark-300;
   /* Tables */
 }
 

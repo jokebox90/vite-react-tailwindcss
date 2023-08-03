@@ -29,7 +29,7 @@
   /* Borders */
   @apply rounded-3xl;
   /* Backgrounds */
-  @apply bg-stone-100;
+  @apply bg-light-100;
   /* Effects */
   @apply shadow-2xl;
   /* Animation */
@@ -44,7 +44,7 @@
   /* Spacing */
   /* Flexbox & Grid */
   /* Borders */
-  @apply border border-stone-200;
+  @apply border border-light-200;
   /* Backgrounds */
   @apply bg-gradient-to-tl from-secondary-100 via-white to-primary-200;
   /* Effects */
@@ -65,7 +65,7 @@
   @apply inline-flex gap-2;
   /* Borders */
   /* Backgrounds */
-  @apply bg-stone-700;
+  @apply bg-dark;
   /* Effects */
   @apply transition-all delay-75 duration-1000;
   /* Animation */
@@ -200,7 +200,7 @@
   @apply rounded-lg;
   @apply border border-stone-300;
   /* Backgrounds */
-  @apply bg-stone-100;
+  @apply bg-light-100;
   /* Effects */
   @apply transition-all delay-75 duration-300;
   @apply bg-opacity-50 hover:bg-opacity-80;

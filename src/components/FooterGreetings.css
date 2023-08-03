@@ -48,7 +48,7 @@
   /* Borders */
   @apply border border-stone-300 rounded-full;
   /* Backgrounds */
-  @apply bg-stone-50;
+  @apply bg-light;
   /* Effects */
   @apply shadow-md;
   /* Animation */

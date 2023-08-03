@@ -8,7 +8,7 @@
   @apply pt-2 pb-3;
   /* Flexbox & Grid */
   /* Borders */
-  @apply border-b border-stone-400;
+  @apply border-b border-dark;
   /* Backgrounds */
   /* Effects */
   /* Animation */
@@ -45,6 +45,6 @@
   /* Animation */
   /* Interactivity */
   /* Typo */
-  @apply text-stone-700;
+  @apply text-dark;
   /* Tables */
 }

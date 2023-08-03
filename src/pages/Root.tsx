@@ -27,7 +27,7 @@ export default function Root(Props: AppProps) {
   const SocialLinkGroup = lazy(() => import("../components/SocialLinkGroup"));
 
   return (
-    <div data-theme="owner" className="max-w-screen bg-stone-200">
+    <div data-theme="owner" className="max-w-screen bg-light-200">
       <SEO
         title="PetitBoutDeCloud"
         content="L’agence Web consciente des petits détails qui font les grandes différences"
@@ -49,7 +49,7 @@ export default function Root(Props: AppProps) {
               </LandingTitle>
 
               <LandingQuote
-                className="text-stone-50 text-center"
+                className="text-light text-center"
                 truncate={{
                   length: 100,
                 }}
