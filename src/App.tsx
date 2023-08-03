@@ -1,11 +1,11 @@
 // src/App.tsx
 
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { MatomoProvider, createInstance } from "@datapunt/matomo-tracker-react";
 import appConfig from "./app.json";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import moment from "moment";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 const router = createBrowserRouter([
   {
@@ -85,28 +85,10 @@ moment.locale("fr", {
   },
 });
 
-
-const instance = createInstance({
-  urlBase: "https://matomo.petitboutde.cloud",
-  siteId: 1,
-  trackerUrl: "https://matomo.petitboutde.cloud/matomo.php",
-  srcUrl: "https://matomo.petitboutde.cloud/matomo.js",
-  disabled: false,
-  heartBeat: {
-    active: true,
-    seconds: 10,
-  },
-  configurations: {
-    disableCookies: false,
-    setSecureCookie: true,
-    setRequestMethod: "POST",
-  },
-});
-
 export default function App() {
-  return (
-    <MatomoProvider value={instance}>
-      <RouterProvider router={router} />
-    </MatomoProvider>
-  );
+  const { enableLinkTracking } = useMatomo();
+
+  enableLinkTracking();
+
+  return <RouterProvider router={router} />;
 }
