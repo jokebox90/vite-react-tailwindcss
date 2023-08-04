@@ -5,12 +5,14 @@ import _ from "lodash-es";
 import moment from "moment";
 import { ReactNode, useEffect, useState } from "react";
 import "./MobileDevice.css";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 interface MobileDeviceProps {
   children: ReactNode[] | ReactNode;
 }
 
 export default function MobileDevice({ children }: MobileDeviceProps) {
+  const { trackPageView, trackEvent } = useMatomo();
   const [state, setState] = useState({
     time: moment().format("HH:mm"),
     toEnd: true,
@@ -20,6 +22,8 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
     const element = state.toEnd
       ? document.querySelector(".mobile-device-ui-end")
       : document.querySelector(".mobile-device-ui-start");
+
+    trackEvent({ category: "home-page", action: "scroll-event" });
 
     element?.scrollIntoView({
       inline: "nearest",
@@ -49,6 +53,12 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
       timerID && clearTimeout(timerID);
     };
   }, [state]);
+
+  // Track page view
+  useEffect(() => {
+    trackPageView({});
+  });
+
 
   return (
     <div className="mobile-device-jacket">
