@@ -57,7 +57,7 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
           <div className="mobile-device-taskbar">
             <p className="mobile-device-text-group">
               <span>{state.time}</span>
-              <span>{moment().format('ddd D MMMM')}</span>
+              <span>{moment().format("ddd D MMMM")}</span>
             </p>
 
             <span className="mobile-device-divider"></span>
@@ -127,13 +127,16 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
         </div>
 
         <div className="mobile-device-cta">
-          <button className="mobile-device-button">
+          <a
+            className="mobile-device-button"
+            href="https://calendly.com/jonathan-vagnier/consultation-pour-creer-votre-site-ou-votre-application"
+          >
             <span className="mobile-device-button-text">Prendre RDV</span>
 
             <span className="mobile-device-button-icon">
               <FontAwesomeIcon icon={["fas", "clock"]} />
             </span>
-          </button>
+          </a>
         </div>
       </div>
     </div>
