@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 
 import _ from "lodash-es";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Isotope, IsotopeItem } from "../components/Isotope";
 import PriceQuickViews from "../components/PriceQuickViews";
 import PriceToggleView from "../components/PriceToggleView";
@@ -16,8 +16,10 @@ import StackedListItem from "../components/StackedListItem";
 import { IconName } from "@fortawesome/fontawesome-svg-core";
 import Icon from "../components/Icon";
 import RevealedWords from "../components/RevealedWords";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 export default function Home() {
+  const { trackPageView } = useMatomo();
   const cardProvider = useCardProvider();
   const checkList = useCheckListProvider();
 
@@ -49,6 +51,11 @@ export default function Home() {
     advance: "filter-advance filter-partner",
     partner: "filter-partner",
   };
+
+  // Track page view
+  useEffect(() => {
+    trackPageView({});
+  });
 
   return (
     <main id="main">

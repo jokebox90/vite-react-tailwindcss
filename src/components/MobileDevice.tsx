@@ -12,7 +12,7 @@ interface MobileDeviceProps {
 }
 
 export default function MobileDevice({ children }: MobileDeviceProps) {
-  const { trackPageView, trackEvent } = useMatomo();
+  const { trackEvent } = useMatomo();
   const [state, setState] = useState({
     time: moment().format("HH:mm"),
     toEnd: true,
@@ -23,7 +23,7 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
       ? document.querySelector(".mobile-device-ui-end")
       : document.querySelector(".mobile-device-ui-start");
 
-    trackEvent({ category: "home-page", action: "scroll-event" });
+    trackEvent({ category: "home-page", action: "cta-event" });
 
     element?.scrollIntoView({
       inline: "nearest",
@@ -54,10 +54,7 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
     };
   }, [state]);
 
-  // Track page view
-  useEffect(() => {
-    trackPageView({});
-  });
+
 
 
   return (

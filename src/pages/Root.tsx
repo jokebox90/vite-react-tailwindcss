@@ -5,6 +5,7 @@ import { Outlet } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Icon from "../components/Icon";
 import SEO from "../components/SEO";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 type AppProps = {
   config: object;
@@ -25,6 +26,7 @@ export default function Root(Props: AppProps) {
   const NavbarMenu = lazy(() => import("../components/NavbarMenu"));
   const SocialLink = lazy(() => import("../components/SocialLink"));
   const SocialLinkGroup = lazy(() => import("../components/SocialLinkGroup"));
+  const { trackEvent } = useMatomo();
 
   return (
     <div data-theme="owner" className="max-w-screen bg-light-200">
@@ -59,11 +61,13 @@ export default function Root(Props: AppProps) {
               </LandingQuote>
               <div
                 className="animate-bounce"
-                onClick={() =>
+                onClick={() => {
+
+                  trackEvent({ category: "home-page", action: "scroll-event" });
                   document.getElementById("main")?.scrollIntoView({
                     behavior: "smooth",
                   })
-                }
+                }}
               >
                 <Icon
                   icon={["fas", "play-circle"]}

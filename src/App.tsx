@@ -6,6 +6,7 @@ import Root from "./pages/Root";
 import Home from "./pages/Home";
 import moment from "moment";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useEffect } from "react";
 
 const router = createBrowserRouter([
   {
@@ -86,9 +87,14 @@ moment.locale("fr", {
 });
 
 export default function App() {
-  const { enableLinkTracking } = useMatomo();
+  const { trackPageView, enableLinkTracking } = useMatomo();
 
   enableLinkTracking();
+
+  // Track page view
+  useEffect(() => {
+    trackPageView({});
+  });
 
   return <RouterProvider router={router} />;
 }
