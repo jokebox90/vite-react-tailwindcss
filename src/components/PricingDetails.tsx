@@ -1,7 +1,7 @@
 // src/pages/Home.tsx
 
 import _ from "lodash-es";
-import { createRef, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import PriceToggleView from "./PriceToggleView";
 import useCardProvider from "../composables/cardProvider";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
@@ -12,7 +12,6 @@ import "./PricingDetails.css";
 export default function PricingDetails() {
   const { trackPageView } = useMatomo();
   const cardProvider = useCardProvider();
-  const animateRef = createRef<HTMLDivElement>();
   const observerRef = useRef(
     new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
