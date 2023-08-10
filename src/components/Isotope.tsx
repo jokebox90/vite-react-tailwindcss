@@ -14,7 +14,7 @@ interface IsotopeProps {
 }
 
 export function Isotope({ children, filter, className }: IsotopeProps) {
-  const isoRef = useRef({} as IT);
+  const isoRef = useRef<IsotopeLayout>();
   const gridRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
@@ -27,10 +27,10 @@ export function Isotope({ children, filter, className }: IsotopeProps) {
       gridRef.current as HTMLElement,
       isoOptions as IsotopeOptions
     );
-  }, [gridRef]);
+  }, [gridRef, isoRef]);
 
   useEffect(() => {
-    isoRef.current.arrange({
+    isoRef.current?.arrange({
       filter: (itemElement) => {
         return itemElement.classList.contains(filter);
       },
