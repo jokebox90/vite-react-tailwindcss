@@ -1,6 +1,7 @@
 // src/components/SEO.tsx
 
-import { Helmet } from "react-helmet";
+import { Fragment } from "react";
+import { Helmet } from "react-helmet-async";
 
 interface SEOProps {
   title: string;
@@ -9,12 +10,12 @@ interface SEOProps {
 
 export default function SEO({ content, title }: SEOProps) {
   return (
-    <div>
+    <Fragment>
       <Helmet>
         <html lang="fr" />
         <title>{title}</title>
         <meta name="description" content={content} />
       </Helmet>
-    </div>
+    </Fragment>
   );
 }
