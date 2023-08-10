@@ -20,8 +20,8 @@ export default function MobileDevice({ children }: MobileDeviceProps) {
 
   const scrollIntoCheckListElement = () => {
     const element = state.toEnd
-      ? document.query(".mobile-device-ui-end")
-      : document.query(".mobile-device-ui-start");
+      ? document.querySelector(".mobile-device-ui-end")
+      : document.querySelector(".mobile-device-ui-start");
 
     trackEvent({ category: "home-page", action: "cta-event" });
 
