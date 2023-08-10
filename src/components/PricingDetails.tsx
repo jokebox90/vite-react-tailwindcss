@@ -1,7 +1,14 @@
 // src/pages/Home.tsx
 
 import _ from "lodash-es";
-import { useEffect, useRef, useState } from "react";
+import {
+  RefObject,
+  createRef,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+} from "react";
 import PriceToggleView from "./PriceToggleView";
 import useCardProvider from "../composables/cardProvider";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
@@ -24,26 +31,26 @@ export default function PricingDetails() {
     })
   );
 
-  const [state, setState] = useState({
-    togglePrice: true,
+  const [pricing, setPricing] = useState({
+    starter: 90,
+    advance: 180,
+    partner: 450,
   });
 
-  const [filter, setFilter] = useState(["starter", "advance", "partner"]);
+  const [periodicity, setPeriodicity] = useState("annualy");
 
-  const togglePriceQuickViews = () =>
-    setState((prevState) => ({
-      ...prevState,
-      togglePrice: !prevState.togglePrice,
+  useEffect(() => {
+    const calculate = (price: number) =>
+      periodicity == "annualy" ? price : Math.round((price / 3) * 4);
+
+    setPricing((prevPricing) => ({
+      starter: calculate(90),
+      advance: calculate(180),
+      partner: calculate(450),
     }));
+  }, [periodicity]);
 
-  const showPrice = (price: number, term?: string) => {
-    const priceTerms = {
-      monthly: state.togglePrice ? Math.round((price * 9) / 12) : price,
-      annualy: state.togglePrice ? price * 9 : price * 12,
-    };
-
-    return _.get(priceTerms, term || "monthly");
-  };
+  const [filter, setFilter] = useState(["starter", "advance", "partner"]);
 
   const handleFilter = (filter: string[]) => {
     const filters = document.querySelectorAll(".filter");
@@ -85,8 +92,10 @@ export default function PricingDetails() {
     trackPageView({});
   });
 
-  useEffect(() => handleObserver(observerRef.current), [observerRef]);
+  useLayoutEffect(() => handleObserver(observerRef.current), [observerRef]);
   useEffect(() => handleFilter(filter), [filter]);
+
+  const bodyRefs: RefObject<HTMLElement>[] = [];
 
   return (
     <div className="subscription">
@@ -102,7 +111,11 @@ export default function PricingDetails() {
         </div>
 
         <PriceToggleView
-          toggle={togglePriceQuickViews}
+          toggle={() =>
+            setPeriodicity((prevPeriodicity) =>
+              prevPeriodicity == "monthly" ? "annualy" : "monthly"
+            )
+          }
           variants={["Par mois", "Par années"]}
           className="self-start"
         />
@@ -116,7 +129,7 @@ export default function PricingDetails() {
               className: "starter advance partner",
               filters: ["starter"],
               title: "Meilleure communication",
-              price: 120,
+              price: pricing.starter,
               image: "photographe.jpg",
             },
             {
@@ -124,7 +137,7 @@ export default function PricingDetails() {
               className: "advance partner",
               filters: ["starter", "advance"],
               title: "Gain en efficaté",
-              price: 240,
+              price: pricing.advance,
               image: "wordpress-developer.jpg",
             },
             {
@@ -132,7 +145,7 @@ export default function PricingDetails() {
               className: "partner",
               filters: ["starter", "advance", "partner"],
               title: "Forte croissance",
-              price: 600,
+              price: pricing.partner,
               image: "app-store.jpg",
             },
           ],
@@ -163,7 +176,7 @@ export default function PricingDetails() {
               <div className="price">
                 <img src={`/img/${item.image}`} alt="" />
 
-                <span>{`${showPrice(item.price, "monthly")} €`}</span>
+                <span>{`${item.price} €`}</span>
               </div>
             </div>
           )
@@ -175,16 +188,37 @@ export default function PricingDetails() {
           <div className="flex flex-col gap-4">
             {_.map(
               cardProvider.findBy({ key: "category", value: categoryName }),
-              (card, index) => (
-                <div key={index} className={`details-item ${categoryName}`}>
-                  <Icon
-                    icon={card.icon as IconProp}
-                    size="1x"
-                    className="details-icon"
-                  />
-                  <p className="text">{card.title}</p>
-                </div>
-              )
+              (card, index) => {
+                const bodyRef = createRef<HTMLParagraphElement>();
+
+                bodyRefs.push(bodyRef);
+
+                return (
+                  <div
+                    key={index}
+                    className={`details-item ${categoryName}`}
+                    onClick={() => {
+                      _.each(bodyRefs, (ref) => {
+                        if (ref === bodyRef) {
+                          bodyRef.current?.classList.toggle("hidden");
+                        } else {
+                          ref?.current?.classList.add("hidden");
+                        }
+                      });
+                    }}
+                  >
+                    <Icon icon={card.icon as IconProp} size="1x" />
+
+                    <div className="content">
+                      <p className="title">{card.title}</p>
+                      <Icon icon="play" size="1x" className="divider" />
+                      <p className="body hidden" ref={bodyRef}>
+                        {card.body}
+                      </p>
+                    </div>
+                  </div>
+                );
+              }
             )}
           </div>
         ))}

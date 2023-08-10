@@ -44,7 +44,7 @@
 
 .subscription .filter .caption .text {
   @apply text-secondary-400;
-  @apply text-base font-noto-serif font-bold;
+  @apply text-base lg:text-xl font-noto-serif font-bold;
   font-variant: small-caps;
 }
 
@@ -62,9 +62,15 @@
   @apply relative w-full h-full;
   @apply px-4 py-8 lg:py-20;
   @apply bg-secondary-950 bg-opacity-50;
-  @apply text-secondary-800;
-  @apply text-4xl lg:text-6xl text-center font-display;
+  @apply border border-transparent;
+  @apply text-4xl lg:text-6xl text-center;
+  @apply text-secondary-800 font-display;
 }
+
+.subscription .filter.active {
+  @apply border-transparent;
+}
+
 
 .subscription .filter.active .text {
   @apply text-secondary-600;
@@ -79,22 +85,48 @@
   @apply text-secondary-800;
 }
 
-.subscription .filter:hover .price span,
+.subscription .filter:hover {
+  @apply border-secondary-400;
+}
+
+.subscription .filter:hover .price span {
+  @apply text-secondary-500;
+}
+
+.subscription .filter:hover .text {
+  @apply text-secondary-100;
+}
+
+.subscription .filter:hover .icon {
+  @apply text-secondary-100;
+}
+
+.subscription .filter:hover .caption {
+  @apply bg-secondary-500;
+}
+
+
+.subscription .filter.selected:focus,
+.subscription .filter.selected {
+  @apply border-transparent;
+}
+
+.subscription .filter.selected:focus .price span,
 .subscription .filter.selected .price span {
   @apply text-secondary-400;
 }
 
-.subscription .filter:hover .text,
+.subscription .filter.selected:focus .text,
 .subscription .filter.selected .text {
-  @apply text-secondary-600;
+  @apply text-secondary-50;
 }
 
-.subscription .filter:hover .icon,
+.subscription .filter.selected:focus .icon,
 .subscription .filter.selected .icon {
-  @apply text-secondary-600;
+  @apply text-secondary-50;
 }
 
-.subscription .filter:hover .caption,
+.subscription .filter.selected:focus .caption,
 .subscription .filter.selected .caption {
   @apply bg-secondary-400;
 }
@@ -107,15 +139,27 @@
 }
 
 .subscription .details-item {
+  @apply cursor-pointer;
+  @apply overflow-hidden;
   @apply min-h-[96px];
   @apply inline-flex justify-end items-start gap-2;
   @apply opacity-0;
   @apply transition-all delay-75 duration-300;
 }
 
-.subscription .details-item .text {
+.subscription .details-item .content {
   @apply flex-1;
-  @apply text-start;
+}
+
+.subscription .details-item .title {
+  @apply mb-2;
+  @apply text-start text-xl 2xl:text-2xl font-noto;
+  font-variant: small-caps;
+}
+
+.subscription .details-item .body {
+  @apply pb-8;
+  @apply text-start text-base 2xl:text-lg font-noto-serif;
 }
 
 .subscription .details-item .icon {
@@ -123,6 +167,17 @@
   @apply bg-secondary-50;
   @apply rounded-full;
   @apply text-xl text-secondary-600;
+}
+
+.subscription .details-item .icon.divider {
+  @apply w-2/3 h-3;
+  @apply bg-transparent;
+  @apply rounded-none border-t-4 border-secondary-50;
+  @apply text-base text-secondary-50;
+}
+
+.subscription .details-item .icon.divider svg {
+  @apply rotate-90;
 }
 
 .subscription .details-item.active {
