@@ -5,7 +5,7 @@ import { Outlet } from "react-router-dom";
 import { Suspense, lazy } from "react";
 import Icon from "../components/Icon";
 import SEO from "../components/SEO";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import Button from "../components/Button";
 
 type AppProps = {
   config: object;
@@ -26,16 +26,15 @@ export default function Root(Props: AppProps) {
   const NavbarMenu = lazy(() => import("../components/NavbarMenu"));
   const SocialLink = lazy(() => import("../components/SocialLink"));
   const SocialLinkGroup = lazy(() => import("../components/SocialLinkGroup"));
-  const { trackEvent } = useMatomo();
 
   return (
-    <div data-theme="owner" className="max-w-screen bg-light-200">
-      <SEO
-        title="PetitBoutDeCloud"
-        content="L’agence Web consciente des petits détails qui font les grandes différences"
-      />
-
+    <div data-theme="owner" className="w-screen bg-light-200 overflow-x-hidden">
       <Suspense fallback={<div>Page is Loading...</div>}>
+        <SEO
+          title="PetitBoutDeCloud"
+          content="L'agence Web consciente des petits détails qui font les grandes différences"
+        />
+
         <header className="header dark:header-dark">
           <Navbar>
             <NavbarBrand>PetitBoutDeCloud</NavbarBrand>
@@ -56,25 +55,26 @@ export default function Root(Props: AppProps) {
                   length: 100,
                 }}
               >
-                L’agence Web consciente des petits détails qui font les grandes
+                L'agence Web consciente des petits détails qui font les grandes
                 différences
               </LandingQuote>
-              <div
-                className="animate-bounce"
-                onClick={() => {
 
-                  trackEvent({ category: "home-page", action: "scroll-event" });
+              <Button
+                className="animate-bounce"
+                eventCategory="home-page"
+                eventAction="scroll-event"
+                onClick={() =>
                   document.getElementById("main")?.scrollIntoView({
                     behavior: "smooth",
                   })
-                }}
+                }
               >
                 <Icon
                   icon={["fas", "play-circle"]}
                   size="2x"
                   className="rotate-90 text-white"
                 ></Icon>
-              </div>
+              </Button>
             </LandingSection>
           </Landing>
         </header>
