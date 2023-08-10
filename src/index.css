@@ -21,7 +21,7 @@ body {
   /* Layout */
   @apply relative block;
   /* Sizing */
-  @apply w-screen h-screen max-w-full min-h-screen;
+  @apply w-screen h-screen min-h-screen;
   /* Spacing */
   @apply m-0 p-0;
   /* Flexbox & Grid */
@@ -47,7 +47,7 @@ a {
   /* Layout */
   @apply relative flex;
   /* Sizing */
-  @apply w-screen h-screen max-w-full min-h-screen;
+  @apply w-screen h-screen min-h-screen;
   /* Spacing */
   @apply m-0 p-0;
   /* Flexbox & Grid */
@@ -85,13 +85,13 @@ header {
   /* Tables */
 }
 
-main {
+#main {
   /* Layout */
   @apply relative block;
   /* Sizing */
-  @apply w-screen h-max max-w-full;
+  @apply w-screen min-h-screen;
   /* Spacing */
-  @apply m-0 px-4 lg:px-10 xl:px-20;
+  @apply m-0;
   /* Flexbox & Grid */
   /* Borders */
   /* Backgrounds */

@@ -1,0 +1,130 @@
+/* src/components/PricingDetails.css */
+
+.subscription {
+  @apply w-full px-4 lg:px-16 xl:px-32 pt-40 pb-24;
+  @apply flex flex-col;
+  @apply bg-secondary-600 text-secondary-50;
+  @apply opacity-50;
+  @apply transition-none;
+}
+
+.subscription.observe {
+  @apply opacity-100;
+  @apply transition-none;
+  @apply transition-all delay-500 duration-1000;
+}
+
+.subscription .group {
+  @apply w-full;
+  @apply mt-8 mb-8;
+  @apply flex flex-col lg:flex-row justify-around gap-4;
+}
+
+.subscription .filter {
+  @apply overflow-hidden w-full;
+  @apply grid grid-cols-2;
+  @apply lg:flex lg:flex-col;
+  @apply border-2;
+  @apply text-secondary-600;
+  @apply border-transparent;
+  @apply rounded-3xl shadow-lg;
+}
+
+.subscription .filter .caption {
+  @apply px-2 lg:py-8;
+  @apply flex items-center justify-start gap-2;
+  @apply lg:flex-col;
+  @apply bg-secondary-800;
+}
+
+.subscription .filter .caption .icon {
+  @apply text-secondary-400;
+  @apply text-2xl;
+}
+
+.subscription .filter .caption .text {
+  @apply text-secondary-400;
+  @apply text-base font-noto-serif font-bold;
+  font-variant: small-caps;
+}
+
+.subscription .filter .price {
+  @apply relative overflow-hidden;
+  @apply w-full;
+  @apply flex-1 flex items-center justify-center;
+}
+
+.subscription .filter .price img {
+  @apply absolute bottom-0 left-0 w-full;
+}
+
+.subscription .filter .price span {
+  @apply relative w-full h-full;
+  @apply px-4 py-8 lg:py-20;
+  @apply bg-secondary-950 bg-opacity-50;
+  @apply text-secondary-800;
+  @apply text-4xl lg:text-6xl text-center font-display;
+}
+
+.subscription .filter.active .text {
+  @apply text-secondary-600;
+}
+
+.subscription .filter.active .caption {
+  @apply bg-secondary-50;
+}
+
+.subscription .filter.active .price span {
+  @apply bg-secondary-950 bg-opacity-50;
+  @apply text-secondary-800;
+}
+
+.subscription .filter:hover .price span,
+.subscription .filter.selected .price span {
+  @apply text-secondary-400;
+}
+
+.subscription .filter:hover .text,
+.subscription .filter.selected .text {
+  @apply text-secondary-600;
+}
+
+.subscription .filter:hover .icon,
+.subscription .filter.selected .icon {
+  @apply text-secondary-600;
+}
+
+.subscription .filter:hover .caption,
+.subscription .filter.selected .caption {
+  @apply bg-secondary-400;
+}
+
+.subscription .details {
+  @apply w-full;
+  @apply flex flex-col items-start gap-4;
+  @apply lg:grid lg:grid-cols-3 lg:grid-flow-row-dense lg:auto-rows-fr;
+  @apply text-start;
+}
+
+.subscription .details-item {
+  @apply min-h-[96px];
+  @apply inline-flex justify-end items-start gap-2;
+  @apply opacity-0;
+  @apply transition-all delay-75 duration-300;
+}
+
+.subscription .details-item .text {
+  @apply flex-1;
+  @apply text-start;
+}
+
+.subscription .details-item .icon {
+  @apply w-12 h-12;
+  @apply bg-secondary-50;
+  @apply rounded-full;
+  @apply text-xl text-secondary-600;
+}
+
+.subscription .details-item.active {
+  @apply opacity-100;
+}

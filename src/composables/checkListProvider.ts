@@ -20,7 +20,7 @@ const lists = [
       {
         id: 1,
         icon: "circle-check",
-        text: "Développement d’interfaces Web et mobile",
+        text: "Développement d'interfaces Web et mobile",
       },
       {
         id: 2,
@@ -40,7 +40,7 @@ const lists = [
       {
         id: 5,
         icon: "circle-check",
-        text: "Aide à la prise en main d’outils numériques",
+        text: "Aide à la prise en main d'outils numériques",
       },
       {
         id: 6,
@@ -55,7 +55,7 @@ const lists = [
       {
         id: 8,
         icon: "circle-check",
-        text: "Création d’hébergement Web et de nom de domaine",
+        text: "Création d'hébergement Web et de nom de domaine",
       },
       {
         id: 9,

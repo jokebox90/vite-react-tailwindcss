@@ -2,33 +2,31 @@
 
 import "isotope-cells-by-column";
 import "isotope-cells-by-row";
-import IT from "isotope-layout";
+import IsotopeLayout, { IsotopeOptions } from "isotope-layout";
 import _ from "lodash-es";
-import { ReactNode, useEffect, useRef } from "react";
+import { ReactNode, createRef, useEffect, useRef } from "react";
 import "./Isotope.css";
 
 interface IsotopeProps {
-  children: ReactNode[] | ReactNode;
   filter: string;
-  className: string;
+  children: ReactNode[] | ReactNode;
+  className?: string;
 }
 
-export function Isotope({
-  children,
-  filter,
-  className: argClass,
-}: IsotopeProps) {
-  const className = argClass ? _.split(argClass) : [];
+export function Isotope({ children, filter, className }: IsotopeProps) {
   const isoRef = useRef({} as IT);
-  const gridRef = useRef({} as HTMLDivElement);
+  const gridRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
-    const grid = gridRef.current;
-
-    isoRef.current = new IT(grid, {
-      itemSelector: ".isotope-item",
+    const isoOptions = {
+      item: ".isotope-item",
       layoutMode: "fitRows",
-    });
+    };
+
+    isoRef.current = new IsotopeLayout(
+      gridRef.current as HTMLElement,
+      isoOptions as IsotopeOptions
+    );
   }, [gridRef]);
 
   useEffect(() => {
@@ -37,12 +35,13 @@ export function Isotope({
         return itemElement.classList.contains(filter);
       },
     });
-  }, [filter]);
-
-  className.splice(0, 0, "isotope");
+  }, [filter, isoRef]);
 
   return (
-    <div ref={gridRef} className={_.join(className, " ")}>
+    <div
+      ref={gridRef}
+      className={className ? `isotope ${className}` : "isotope"}
+    >
       <div className="isotope-sizer"></div>
       {children}
       <div className="isotope-sizer"></div>
@@ -58,18 +57,16 @@ interface IsotopeItemProps {
 
 export function IsotopeItem({
   children,
-  className: argClass,
-  innerClass: argInnerClass,
+  className,
+  innerClass,
 }: IsotopeItemProps) {
-  const className = argClass ? _.split(argClass) : [];
-  const innerClass = argInnerClass ? _.split(argInnerClass) : [];
-
-  className.splice(0, 0, "isotope-item");
-  innerClass.splice(0, 0, "isotope-inner");
-
   return (
-    <div className={_.join(className, " ")}>
-      <div className={_.join(innerClass, " ")}>{children}</div>
+    <div className={className ? `isotope-item ${className}` : "isotope-item"}>
+      <div
+        className={innerClass ? `isotope-inner ${innerClass}` : "isotope-inner"}
+      >
+        {children}
+      </div>
     </div>
   );
 }

@@ -2,12 +2,13 @@
 
 .footer {
   /* Layout */
-  /* Sizing */
   @apply relative;
+  /* Sizing */
+  @apply w-screen;
   /* Spacing */
-  @apply mt-20 px-10 py-20;
+  @apply py-20 px-4 lg:px-16 xl:px-32;
   /* Flexbox & Grid */
-  @apply md:grid-cols-4;
+  @apply md:grid-cols-4 gap-0;
   /* @apply place-items-start justify-center items-start place-content-stretch; */
   /* Borders */
   /* Backgrounds */

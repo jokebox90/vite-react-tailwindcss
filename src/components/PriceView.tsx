@@ -1,9 +1,10 @@
 // src/components/PriceQuickViews.tsx
 
-import _ from "lodash-es";
-import "./PriceView.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Fragment, useRef } from "react";
+import _ from "lodash-es";
+import { Fragment, createRef, useEffect } from "react";
+import Button from "./Button";
+import "./PriceView.css";
 
 interface PriceQuickViewsProps {
   quote?: string;
@@ -12,10 +13,6 @@ interface PriceQuickViewsProps {
   active?: boolean;
   onClick?: () => void;
   className?: string;
-  innerClass?: string;
-  quoteClass?: string;
-  commentClass?: string;
-  titleClass?: string;
 }
 
 export default function PriceView({
@@ -24,33 +21,12 @@ export default function PriceView({
   content,
   active,
   onClick,
-  className: argClass,
-  innerClass: argInnerClass,
-  quoteClass: argQuoteClass,
-  titleClass: argTitleClass,
-  commentClass: argCommentClass,
+  className,
+  ...otherProps
 }: PriceQuickViewsProps) {
-  const className = argClass ? _.split(argClass) : [];
-  const titleClass = argTitleClass ? _.split(argTitleClass) : [];
-  const innerClass = argInnerClass ? _.split(argInnerClass) : [];
-  const quoteClass = argQuoteClass ? _.split(argQuoteClass) : [];
-  const commentClass = argCommentClass ? _.split(argCommentClass) : [];
-
-  className.splice(0, 0, "price-view");
-  active && className.push("price-view-active");
-  titleClass.splice(0, 0, "price-view-title");
-  innerClass.splice(0, 0, "price-view-inner");
-  quoteClass.splice(0, 0, "price-view-quote");
-  commentClass.splice(0, 0, "price-view-content");
-
-  const priceViewRef = useRef({} as HTMLDivElement);
+  const buttonRef = createRef<HTMLButtonElement>();
 
   const handleClick = () => {
-    _.map(document.querySelectorAll(".price-view-active"), (n) => {
-      n.classList.remove("price-view-active");
-    });
-    priceViewRef.current.classList.add("price-view-active");
-
     document.querySelector(".price-view-scroll-target")?.scrollIntoView({
       block: "start",
       behavior: "smooth",
@@ -59,26 +35,42 @@ export default function PriceView({
     onClick && onClick();
   };
 
+  useEffect(() => {
+    if (active) {
+      buttonRef.current?.classList.add("price-view-active")
+    } else {
+      buttonRef.current?.classList.remove("price-view-active");
+    }
+  }, [active, buttonRef]);
+
   return (
     <Fragment>
-      <div className="price-view-scroll-target -mt-24"></div>
-      <div
-        className={_.join(className, " ")}
-        ref={priceViewRef}
+      <span className="price-view-scroll-target -mt-24"></span>
+
+      <Button
+        eventCategory="price-view"
+        eventAction={title || ""}
         onClick={handleClick}
+        buttonRef={buttonRef}
+        className={_.join(["price-view", className], " ")}
+        {...otherProps}
       >
-        <div className={_.join(innerClass, " ")}>
-          <div className="price-view-circle">
+        <span className="price-view-inner">
+          <span className="price-view-circle">
             <FontAwesomeIcon icon={["fas", "circle"]} size="1x" />
-          </div>
-          <div className="price-view-circle">
+          </span>
+
+          <span className="price-view-circle">
             <FontAwesomeIcon icon={["fas", "circle"]} size="1x" />
-          </div>
-          <h4 className={_.join(quoteClass, " ")}>{quote}</h4>
-          <h5 className={_.join(titleClass, " ")}>{title}</h5>
-          <p className={_.join(commentClass, " ")}>{content}</p>
-        </div>
-      </div>
+          </span>
+
+          <h4 className="price-view-quote">{quote}</h4>
+
+          <h5 className="price-view-title">{title}</h5>
+
+          <p className="price-view-content">{content}</p>
+        </span>
+      </Button>
     </Fragment>
   );
 }

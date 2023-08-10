@@ -4,6 +4,7 @@
   /* Layout */
   @apply fixed top-0 z-40;
   /* Sizing */
+  @apply w-screen;
   /* Spacing */
   /* Flexbox & Grid */
   /* Borders */
