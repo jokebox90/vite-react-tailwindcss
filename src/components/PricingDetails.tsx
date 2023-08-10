@@ -43,11 +43,11 @@ export default function PricingDetails() {
     const calculate = (price: number) =>
       periodicity == "annualy" ? price : Math.round((price / 3) * 4);
 
-    setPricing((prevPricing) => ({
+    setPricing({
       starter: calculate(90),
       advance: calculate(180),
       partner: calculate(450),
-    }));
+    });
   }, [periodicity]);
 
   const [filter, setFilter] = useState(["starter", "advance", "partner"]);
