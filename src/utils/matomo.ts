@@ -1,6 +1,6 @@
 // src/pages/Home.tsx
 
-import { createInstance } from "@datapunt/matomo-tracker-react";
+import { createInstance } from "@jonkoops/matomo-tracker-react";
 
 const instance = createInstance({
   urlBase: "https://matomo.petitboutde.cloud",

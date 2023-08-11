@@ -1,7 +1,7 @@
 // src/components/Button.tsx
 
 import { ReactNode, Ref } from "react";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@jonkoops/matomo-tracker-react";
 
 interface ButtonProps {
   title?: string;

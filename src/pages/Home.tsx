@@ -9,7 +9,7 @@ import StackedListItem from "../components/StackedListItem";
 import { IconName } from "@fortawesome/fontawesome-svg-core";
 import Icon from "../components/Icon";
 import RevealedWords from "../components/RevealedWords";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@jonkoops/matomo-tracker-react";
 
 export default function Home() {
   const { trackPageView } = useMatomo();

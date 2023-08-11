@@ -5,7 +5,7 @@ import _ from "lodash-es";
 import moment from "moment";
 import { ReactNode, useEffect, useState } from "react";
 import "./MobileDevice.css";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@jonkoops/matomo-tracker-react";
 
 interface MobileDeviceProps {
   children: ReactNode[] | ReactNode;

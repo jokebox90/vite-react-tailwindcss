@@ -9,7 +9,7 @@ import PriceView from "../components/PriceView";
 import PriceViewGroup from "../components/PriceViewGroup";
 import Sheet from "../components/Sheet";
 import useCardProvider from "../composables/cardProvider";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@jonkoops/matomo-tracker-react";
 
 export default function PricingDescription() {
   const { trackPageView } = useMatomo();

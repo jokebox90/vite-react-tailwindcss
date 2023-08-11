@@ -6,7 +6,7 @@ import { Suspense, lazy, useLayoutEffect } from "react";
 import Icon from "../components/Icon";
 import SEO from "../components/SEO";
 import Button from "../components/Button";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@jonkoops/matomo-tracker-react";
 
 type AppProps = {
   config: object;

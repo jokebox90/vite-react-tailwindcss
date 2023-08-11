@@ -13,7 +13,7 @@ import {
 } from "react";
 import PriceToggleView from "./PriceToggleView";
 import useCardProvider from "../composables/cardProvider";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
+import { useMatomo } from "@jonkoops/matomo-tracker-react";
 import Icon from "./Icon";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import "./PricingDetails.css";

@@ -1,6 +1,6 @@
 // src/pages/Home.tsx
 
-import { MatomoProvider } from "@datapunt/matomo-tracker-react";
+import { MatomoProvider } from "@jonkoops/matomo-tracker-react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
