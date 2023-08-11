@@ -2,8 +2,10 @@
 
 import _ from "lodash-es";
 import {
+  Fragment,
   RefObject,
   createRef,
+  useCallback,
   useEffect,
   useLayoutEffect,
   useRef,
@@ -30,56 +32,23 @@ export default function PricingDetails() {
       });
     })
   );
+  const itemRefs: RefObject<HTMLElement>[] = [];
+  const bodyRefs: RefObject<HTMLElement>[] = [];
+  const filterRefs: RefObject<HTMLElement>[] = [];
 
-  const [pricing, setPricing] = useState({
-    starter: 90,
-    advance: 180,
-    partner: 450,
-  });
-
+  const [selected, setSelected] = useState("filter-partner");
+  const [active, setActive] = useState([
+    "filter-starter",
+    "filter-advance",
+    "filter-partner",
+  ]);
   const [periodicity, setPeriodicity] = useState("annualy");
 
-  useEffect(() => {
-    const calculate = (price: number) =>
-      periodicity == "annualy" ? price : Math.round((price / 3) * 4);
-
-    setPricing({
-      starter: calculate(90),
-      advance: calculate(180),
-      partner: calculate(450),
-    });
-  }, [periodicity]);
-
-  const [filter, setFilter] = useState(["starter", "advance", "partner"]);
-
-  const handleFilter = (filter: string[]) => {
-    const filters = document.querySelectorAll(".filter");
-
-    const items = document.querySelectorAll(
-      filter.length < 0
-        ? `.details-item.${_.join(filter, ".")}`
-        : ".details-item"
-    );
-
-    _.each(filters, async (node) => node.classList.remove("active"));
-    _.each(items, async (node) => node.classList.remove("active"));
-
-    const activateFilters = _.filter(
-      filters,
-      (node) => _.intersection(node.classList, filter).length > 0
-    );
-
-    const activateItems = _.filter(
-      items,
-      (node) => _.intersection(node.classList, filter).length > 0
-    );
-
-    _.each(activateFilters, async (node) => node.classList.add("active"));
-    _.each(activateItems, async (node) => node.classList.add("active"));
-
-    _.each(filters, async (node) => node.classList.remove("selected"));
-    _.last(activateFilters)?.classList.add("selected");
-  };
+  const calculate = useCallback(
+    (price: number) =>
+      periodicity == "annualy" ? price : Math.round((price / 3) * 4),
+    [periodicity]
+  );
 
   const handleObserver = (observer: IntersectionObserver) => {
     _.each(document.querySelectorAll(".subscription"), (node) => {
@@ -93,32 +62,64 @@ export default function PricingDetails() {
   });
 
   useLayoutEffect(() => handleObserver(observerRef.current), [observerRef]);
-  useEffect(() => handleFilter(filter), [filter]);
+  useEffect(() => {
+    _.each(filterRefs, async (ref) => {
+      if (_.intersection(ref.current?.classList, active).length > 0) {
+        ref.current?.classList.add("active");
+      } else {
+        ref.current?.classList.remove("active");
+      }
 
-  const bodyRefs: RefObject<HTMLElement>[] = [];
+      if (_.includes(ref.current?.classList, selected)) {
+        ref.current?.classList.add("selected");
+      } else {
+        ref.current?.classList.remove("selected");
+      }
+    });
+
+    _.each(itemRefs, async (ref) => {
+      if (_.intersection(ref.current?.classList, active).length > 0) {
+        ref.current?.classList.add("active");
+      } else {
+        ref.current?.classList.remove("active");
+      }
+
+      if (_.includes(ref.current?.classList, selected)) {
+        ref.current?.classList.add("selected");
+      } else {
+        ref.current?.classList.remove("selected");
+      }
+    });
+  }, [active, selected, filterRefs, itemRefs]);
 
   return (
     <div className="subscription">
-      <div className="pb-4 flex flex-col lg:flex-row justify-between">
-        <div className="text-start">
-          <h3 className="pb-2 text-6xl font-display border-b-2 border-secondary-50">
-            Forfaits
+      <div className="pb-4 flex flex-col lg:grid lg:grid-cols-5 justify-between gap-4">
+        <div className="text-start col-span-3">
+          <h3 className="pb-2 text-3xl font-display border-b-2 border-secondary-50">
+            Partagez le savoir faire de votre organisation sur le web
           </h3>
 
           <p className="pt-4 pb-4">
-            Engagement sur un mois ou sur une année et surtout à volonté
+            Définissez le service adapté à votre manière de communiquer sur le
+            web. Assurez-vous d'atteindre les personnes de votre choix et de
+            remplir les objectifs fixés par votre activité. Nous mettons en
+            oeuvre tous les outils numériques et les compétences techniques pour
+            soutenir vos projets et vos ambitions au quotidien.
           </p>
         </div>
 
-        <PriceToggleView
-          toggle={() =>
-            setPeriodicity((prevPeriodicity) =>
-              prevPeriodicity == "monthly" ? "annualy" : "monthly"
-            )
-          }
-          variants={["Par mois", "Par années"]}
-          className="self-start"
-        />
+        <div className="col-span-2 lg:flex lg:justify-center lg:items-center">
+          <PriceToggleView
+            toggle={() =>
+              setPeriodicity((prevPeriodicity) =>
+                prevPeriodicity == "monthly" ? "annualy" : "monthly"
+              )
+            }
+            variants={["Par mois", "Par années"]}
+            className="self-start"
+          />
+        </div>
       </div>
 
       <div className="group">
@@ -126,60 +127,68 @@ export default function PricingDetails() {
           [
             {
               name: "starter",
-              className: "starter advance partner",
-              filters: ["starter"],
+              filters: ["filter-starter"],
               title: "Meilleure communication",
-              price: pricing.starter,
+              price: calculate(90),
               image: "photographe.jpg",
             },
             {
               name: "advance",
-              className: "advance partner",
-              filters: ["starter", "advance"],
+              filters: ["filter-starter", "filter-advance"],
               title: "Gain en efficaté",
-              price: pricing.advance,
+              price: calculate(180),
               image: "wordpress-developer.jpg",
             },
             {
               name: "partner",
-              className: "partner",
-              filters: ["starter", "advance", "partner"],
+              filters: ["filter-starter", "filter-advance", "filter-partner"],
               title: "Forte croissance",
-              price: pricing.partner,
+              price: calculate(450),
               image: "app-store.jpg",
             },
           ],
-          (item) => (
-            <div
-              className={_.join(["filter", item.className], " ")}
-              onClick={() => {
-                const slice = item.filters.slice(0, -1);
+          (item, index, arr) => {
+            const filterRef = createRef<HTMLDivElement>();
 
-                setFilter((prevFilter) =>
-                  _.isEqual(prevFilter, item.filters) ? slice : item.filters
-                );
-              }}
-            >
-              <div className="caption">
-                <Icon
-                  icon={
-                    filter.includes(item.name)
-                      ? ["fas", "check-square"]
-                      : ["far", "square"]
-                  }
-                  size="1x"
-                />
+            filterRefs.push(filterRef);
 
-                <span className="text">{item.title}</span>
-              </div>
+            return (
+              <Fragment key={index}>
+                <div
+                  ref={filterRef}
+                  className={`filter filter-${item.name}`}
+                  onClick={() => {
+                    if (selected === `filter-${item.name}`) {
+                      setActive(item.filters.slice(0, -1));
+                      setSelected(`filter-${arr[index - 1]?.name}`);
+                    } else {
+                      setActive(item.filters);
+                      setSelected(`filter-${item.name}`);
+                    }
+                  }}
+                >
+                  <div className="caption">
+                    <Icon
+                      icon={
+                        _.includes(active, `filter-${item.name}`)
+                          ? ["fas", "check-square"]
+                          : ["far", "square"]
+                      }
+                      size="1x"
+                    />
 
-              <div className="price">
-                <img src={`/img/${item.image}`} alt="" />
+                    <span className="text">{item.title}</span>
+                  </div>
 
-                <span>{`${item.price} €`}</span>
-              </div>
-            </div>
-          )
+                  <div className="price">
+                    <img src={`/img/${item.image}`} alt="" />
+
+                    <span>{`${item.price} €`}</span>
+                  </div>
+                </div>
+              </Fragment>
+            );
+          }
         )}
       </div>
 
@@ -189,14 +198,17 @@ export default function PricingDetails() {
             {_.map(
               cardProvider.findBy({ key: "category", value: categoryName }),
               (card, index) => {
+                const itemRef = createRef<HTMLDivElement>();
                 const bodyRef = createRef<HTMLParagraphElement>();
 
+                itemRefs.push(itemRef);
                 bodyRefs.push(bodyRef);
 
                 return (
                   <div
                     key={index}
-                    className={`details-item ${categoryName}`}
+                    ref={itemRef}
+                    className={`details-item filter-${categoryName}`}
                     onClick={() => {
                       _.each(bodyRefs, (ref) => {
                         if (ref === bodyRef) {

@@ -1,17 +1,17 @@
 /* src/components/PricingDetails.css */
 
 .subscription {
-  @apply w-full px-4 lg:px-16 xl:px-32 pt-40 pb-24;
+  @apply w-full px-4 lg:px-16 xl:px-32 pt-16 lg:pt-40 pb-24;
   @apply flex flex-col;
   @apply bg-secondary-600 text-secondary-50;
-  @apply opacity-50;
+  @apply opacity-20;
   @apply transition-none;
 }
 
 .subscription.observe {
   @apply opacity-100;
   @apply transition-none;
-  @apply transition-all delay-500 duration-1000;
+  @apply transition-all delay-300 duration-500;
 }
 
 .subscription .group {
@@ -141,9 +141,9 @@
 .subscription .details-item {
   @apply cursor-pointer;
   @apply overflow-hidden;
-  @apply min-h-[96px];
-  @apply inline-flex justify-end items-start gap-2;
-  @apply opacity-0;
+  @apply min-h-[132px];
+  @apply justify-end items-start gap-2;
+  @apply hidden lg:inline-flex lg:opacity-0;
   @apply transition-all delay-75 duration-300;
 }
 
@@ -181,5 +181,5 @@
 }
 
 .subscription .details-item.active {
-  @apply opacity-100;
+  @apply inline-flex lg:opacity-100;
 }
