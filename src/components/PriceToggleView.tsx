@@ -4,14 +4,15 @@ import _ from "lodash-es";
 import { useState } from "react";
 import "./PriceToggleView.css";
 
-type PriceToggleViewProps = {
+interface PriceToggleViewProps {
   className?: string;
+  wrapperClass?: string;
   variants?: string[];
   toggle?: () => void;
-};
+}
 
 export default function PriceToggleView(Props: PriceToggleViewProps) {
-  const { className, variants, toggle } = Props;
+  const { className, wrapperClass, variants, toggle } = Props;
   const [state, setState] = useState({
     toggled: true,
   });
@@ -19,12 +20,10 @@ export default function PriceToggleView(Props: PriceToggleViewProps) {
   const hasVariantLeft = variants?.length && variants.length > 0;
   const hasVariantRight = variants?.length && variants.length > 1;
 
-  const wrapperClass = [];
   const innerClass = [];
   const textClass = [];
   const inputClass = className ? _.split(className) : [];
 
-  wrapperClass.push("price-toggle-view");
   innerClass.push("price-toggle-view-label");
   textClass.push("price-toggle-view-text");
   inputClass.push("price-toggle-view-toggle");
@@ -35,7 +34,7 @@ export default function PriceToggleView(Props: PriceToggleViewProps) {
   };
 
   return (
-    <div className={_.join(wrapperClass, " ")} onClick={doToggle}>
+    <div className={_.join(["price-toggle-view", wrapperClass], " ")} onClick={doToggle}>
       <label htmlFor="" className={_.join(innerClass, " ")}>
         {hasVariantLeft && (
           <span className={_.join(textClass, " ")}>{variants[0]}</span>

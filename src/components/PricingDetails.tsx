@@ -8,6 +8,7 @@ import {
   useCallback,
   useEffect,
   useLayoutEffect,
+  useMemo,
   useRef,
   useState,
 } from "react";
@@ -32,35 +33,32 @@ export default function PricingDetails() {
       });
     })
   );
-  const categoryRefs: RefObject<HTMLElement>[] = [];
-  const itemRefs: RefObject<HTMLElement>[] = [];
-  const bodyRefs: RefObject<HTMLElement>[] = [];
-  const filterRefs: RefObject<HTMLElement>[] = [];
-
-  const [selected, setSelected] = useState("filter-partner");
-  const [active, setActive] = useState([
-    "filter-starter",
-    "filter-advance",
-    "filter-partner",
-  ]);
-  const [periodicity, setPeriodicity] = useState("annualy");
+  const mainRef: RefObject<HTMLDivElement> = createRef<HTMLDivElement>();
+  const categoryRefs: RefObject<HTMLElement>[] = useMemo(() => [], []);
+  const itemRefs: RefObject<HTMLElement>[] = useMemo(() => [], []);
+  const bodyRefs: RefObject<HTMLElement>[] = useMemo(() => [], []);
+  const filterRefs: RefObject<HTMLElement>[] = useMemo(() => [], []);
+  const [state, setState] = useState({
+    selected: "filter-partner",
+    active: ["filter-starter", "filter-advance", "filter-partner"],
+    periodicity: "annualy",
+  });
 
   const calculate = useCallback(
     (price: number) =>
-      periodicity == "annualy" ? price : Math.round((price / 3) * 4),
-    [periodicity]
+      state.periodicity == "annualy" ? price : Math.round((price / 3) * 4),
+    [state.periodicity]
   );
 
-  const handleObserver = (observer: IntersectionObserver) => {
-    _.each(document.querySelectorAll(".subscription"), (node) => {
-      observer.observe(node);
-    });
-  };
+  useLayoutEffect(() => {
+    if (mainRef.current) {
+      observerRef.current.observe(mainRef.current);
+    }
+  }, [mainRef, observerRef]);
 
-  useLayoutEffect(() => handleObserver(observerRef.current), [observerRef]);
   useEffect(() => {
     _.each(filterRefs, async (ref) => {
-      if (_.intersection(ref.current?.classList, active).length > 0) {
+      if (_.intersection(ref.current?.classList, state.active).length > 0) {
         ref.current?.classList.add("active");
       } else {
         ref.current?.classList.remove("active");
@@ -68,7 +66,7 @@ export default function PricingDetails() {
     });
 
     _.each(itemRefs, async (ref) => {
-      if (_.intersection(ref.current?.classList, active).length > 0) {
+      if (_.intersection(ref.current?.classList, state.active).length > 0) {
         ref.current?.classList.add("active");
       } else {
         ref.current?.classList.remove("active");
@@ -76,17 +74,17 @@ export default function PricingDetails() {
     });
 
     _.each(categoryRefs, async (ref) => {
-      if (_.intersection(ref.current?.classList, active).length > 0) {
+      if (_.intersection(ref.current?.classList, state.active).length > 0) {
         ref.current?.classList.add("active");
       } else {
         ref.current?.classList.remove("active");
       }
     });
-  }, [active, filterRefs, itemRefs, categoryRefs]);
+  }, [state.active, filterRefs, itemRefs, categoryRefs]);
 
   useEffect(() => {
     _.each(filterRefs, async (ref) => {
-      if (_.includes(ref.current?.classList, selected)) {
+      if (_.includes(ref.current?.classList, state.selected)) {
         ref.current?.classList.add("selected");
       } else {
         ref.current?.classList.remove("selected");
@@ -94,7 +92,7 @@ export default function PricingDetails() {
     });
 
     _.each(itemRefs, async (ref) => {
-      if (_.includes(ref.current?.classList, selected)) {
+      if (_.includes(ref.current?.classList, state.selected)) {
         ref.current?.classList.add("selected");
       } else {
         ref.current?.classList.remove("selected");
@@ -102,18 +100,18 @@ export default function PricingDetails() {
     });
 
     _.each(categoryRefs, async (ref) => {
-      if (_.includes(ref.current?.classList, selected)) {
+      if (_.includes(ref.current?.classList, state.selected)) {
         ref.current?.classList.add("selected");
       } else {
         ref.current?.classList.remove("selected");
       }
     });
-  }, [selected, filterRefs, itemRefs, categoryRefs]);
+  }, [state.selected, filterRefs, itemRefs, categoryRefs]);
 
   return (
-    <div className="subscription">
-      <div className="pb-4 flex flex-col lg:grid lg:grid-cols-5 justify-between gap-4">
-        <div className="text-start col-span-3">
+    <div className="subscription" ref={mainRef}>
+      <div className="pb-4 flex flex-col lg:grid lg:grid-cols-3 justify-between gap-4">
+        <div className="text-start col-span-2">
           <h3 className="pb-4 text-3xl font-display">
             Partagez le savoir faire de votre organisation sur le web
           </h3>
@@ -127,17 +125,20 @@ export default function PricingDetails() {
           </p>
         </div>
 
-        <div className="col-span-2 lg:flex lg:flex-col lg:justify-center lg:items-center">
-          <h3 className="pb-2 text-xl font-display">Forfaits</h3>
-
+        <div className="col-span-1 place-self-center">
+          <p className="text-lg font-display">Engagement</p>
           <PriceToggleView
             toggle={() =>
-              setPeriodicity((prevPeriodicity) =>
-                prevPeriodicity == "monthly" ? "annualy" : "monthly"
-              )
+              setState((prevState) => ({
+                ...prevState,
+                periodicity:
+                  prevState.periodicity == "monthly"
+                    ? "annualy"
+                    : "monthly",
+              }))
             }
             variants={["Par mois", "Par années"]}
-            className="self-start"
+            wrapperClass=""
           />
         </div>
       </div>
@@ -178,12 +179,18 @@ export default function PricingDetails() {
                   ref={filterRef}
                   className={`filter filter-${item.name}`}
                   onClick={async () => {
-                    if (selected === `filter-${item.name}`) {
-                      setActive(item.filters.slice(0, -1));
-                      setSelected(`filter-${arr[index - 1]?.name}`);
+                    if (state.selected === `filter-${item.name}`) {
+                      setState((prevState) => ({
+                        ...prevState,
+                        active: item.filters.slice(0, -1),
+                        selected: `filter-${arr[index - 1]?.name}`,
+                      }));
                     } else {
-                      setActive(item.filters);
-                      setSelected(`filter-${item.name}`);
+                      setState((prevState) => ({
+                        ...prevState,
+                        active: item.filters,
+                        selected: `filter-${item.name}`,
+                      }));
                     }
 
                     trackEvent({
@@ -197,7 +204,7 @@ export default function PricingDetails() {
                   <h4 className="caption">
                     <Icon
                       icon={
-                        _.includes(active, `filter-${item.name}`)
+                        _.includes(state.active, `filter-${item.name}`)
                           ? ["fas", "check-square"]
                           : ["far", "square"]
                       }
@@ -253,11 +260,8 @@ export default function PricingDetails() {
 
             return (
               <Fragment key={key}>
-                <div className="flex flex-col gap-4">
-                  <div
-                    ref={categoryRef}
-                    className={`mb-8 mx-12 px-2 pb-4 pt-8 bg-secondary-50 text-base text-secondary-800 rounded-xl text-center filter-${category.name}`}
-                  >
+                <div className="category" ref={categoryRef}>
+                  <div className={`heading filter-${category.name}`}>
                     <h3 className="text-xl font-noto-serif font-bold small-caps">
                       Options {_.upperFirst(category.name)} *
                     </h3>

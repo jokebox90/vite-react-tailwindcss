@@ -14,6 +14,17 @@
   @apply transition-all delay-300 duration-500;
 }
 
+.subscription .details .category {
+  @apply flex flex-col gap-4;
+}
+
+.subscription .details .category .heading {
+  @apply mb-8 mx-12 px-2 pb-4 pt-8;
+  @apply text-base text-secondary-800 text-center;
+  @apply bg-secondary-50;
+  @apply rounded-lg;
+}
+
 .subscription .group {
   @apply w-full;
   @apply mt-8 mb-8;
@@ -155,7 +166,6 @@
 }
 
 .subscription .details-item .title {
-  @apply mb-6;
   @apply text-start text-xl 2xl:text-2xl font-noto;
   @apply transition-all delay-75 duration-300;
   font-variant: small-caps;
@@ -176,7 +186,7 @@
 }
 
 .subscription .details-item .divider {
-  @apply w-2/3 h-3;
+  @apply w-2/3 mt-2;
   @apply border-t-4 border-secondary-50;
   @apply text-base text-secondary-50;
   @apply transition-all delay-75 duration-300;
