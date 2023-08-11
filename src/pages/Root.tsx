@@ -1,7 +1,7 @@
 // src/Root.tsx
 
 import _ from "lodash-es";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { Suspense, lazy, useLayoutEffect } from "react";
 import Icon from "../components/Icon";
 import SEO from "../components/SEO";
@@ -28,6 +28,7 @@ export default function Root(Props: AppProps) {
   const SocialLink = lazy(() => import("../components/SocialLink"));
   const SocialLinkGroup = lazy(() => import("../components/SocialLinkGroup"));
 
+  const location = useLocation();
   const { trackPageView, enableLinkTracking } = useMatomo();
 
   enableLinkTracking();
@@ -36,7 +37,7 @@ export default function Root(Props: AppProps) {
   useLayoutEffect(() => {
     trackPageView({});
     console.log("Track page view");
-  });
+  }, [location, trackPageView]);
 
   return (
     <div data-theme="owner" className="w-screen bg-light-200 overflow-x-hidden">

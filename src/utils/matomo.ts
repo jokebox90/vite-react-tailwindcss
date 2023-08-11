@@ -3,10 +3,10 @@
 import { createInstance } from "@jonkoops/matomo-tracker-react";
 
 const instance = createInstance({
-  urlBase: "https://matomo.petitboutde.cloud",
-  siteId: 1,
-  trackerUrl: "https://matomo.petitboutde.cloud/matomo.php",
-  srcUrl: "https://matomo.petitboutde.cloud/matomo.js",
+  urlBase: import.meta.env.VITE_MATOMO_URL_BASE,
+  siteId: Number(import.meta.env.VITE_MATOMO_SITE_ID),
+  trackerUrl: import.meta.env.VITE_MATOMO_TRACKER_UR,
+  srcUrl: import.meta.env.VITE_MATOMO_SRC_URL,
   disabled: import.meta.env.VITE_MATOMO_DISABLED !== "false",
   heartBeat: {
     active: true,
