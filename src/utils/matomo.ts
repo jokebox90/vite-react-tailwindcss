@@ -1,7 +1,6 @@
 // src/pages/Home.tsx
 
 import { createInstance } from "@datapunt/matomo-tracker-react";
-import { MatomoProviderProps } from "@datapunt/matomo-tracker-react/lib/MatomoProvider";
 
 const instance = createInstance({
   urlBase: "https://matomo.petitboutde.cloud",
@@ -20,6 +19,4 @@ const instance = createInstance({
   },
 });
 
-export const matomoProps = {
-  value: instance,
-} as MatomoProviderProps;
+export default instance;

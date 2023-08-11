@@ -5,7 +5,7 @@ import appConfig from "./app.json";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
 import { useMatomo } from "@datapunt/matomo-tracker-react";
-import { useEffect } from "react";
+import { useLayoutEffect } from "react";
 
 const router = createBrowserRouter([
   {
@@ -21,14 +21,5 @@ const router = createBrowserRouter([
 ]);
 
 export default function App() {
-  const { trackPageView, enableLinkTracking } = useMatomo();
-
-  enableLinkTracking();
-
-  // Track page view
-  useEffect(() => {
-    trackPageView({});
-  });
-
   return <RouterProvider router={router} />;
 }

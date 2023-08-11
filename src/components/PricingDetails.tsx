@@ -20,8 +20,7 @@ import "./PricingDetails.css";
 import { useLocation } from "react-router-dom";
 
 export default function PricingDetails() {
-  const location = useLocation();
-  const { trackPageView, trackEvent } = useMatomo();
+  const { trackEvent } = useMatomo();
   const cardProvider = useCardProvider();
   const observerRef = useRef(
     new IntersectionObserver((entries) => {
@@ -57,11 +56,6 @@ export default function PricingDetails() {
       observer.observe(node);
     });
   };
-
-  // Track page view
-  useEffect(() => {
-    trackPageView({});
-  }, [location, trackPageView]);
 
   useLayoutEffect(() => handleObserver(observerRef.current), [observerRef]);
   useEffect(() => {
@@ -172,6 +166,8 @@ export default function PricingDetails() {
                       category: "subscription-filter",
                       action: `filter-${item.name}`,
                     });
+
+                    console.log("Track event");
                   }}
                 >
                   <div className="caption">
@@ -200,55 +196,60 @@ export default function PricingDetails() {
       </div>
 
       <div className="details">
-        {_.map(["partner", "advance", "starter"].reverse(), (categoryName) => (
-          <div className="flex flex-col gap-4">
-            {_.map(
-              cardProvider.findBy({ key: "category", value: categoryName }),
-              (card, index) => {
-                const itemRef = createRef<HTMLDivElement>();
-                const bodyRef = createRef<HTMLParagraphElement>();
+        {_.map(
+          ["partner", "advance", "starter"].reverse(),
+          (categoryName, key) => (
+            <div key={key} className="flex flex-col gap-4">
+              {_.map(
+                cardProvider.findBy({ key: "category", value: categoryName }),
+                (card, index) => {
+                  const itemRef = createRef<HTMLDivElement>();
+                  const bodyRef = createRef<HTMLParagraphElement>();
 
-                itemRefs.push(itemRef);
-                bodyRefs.push(bodyRef);
+                  itemRefs.push(itemRef);
+                  bodyRefs.push(bodyRef);
 
-                return (
-                  <div
-                    key={index}
-                    ref={itemRef}
-                    className={`details-item filter-${categoryName}`}
-                    onClick={async () => {
-                      _.each(bodyRefs, async (ref) => {
-                        if (ref === bodyRef) {
-                          bodyRef.current?.classList.toggle("hidden");
-                          trackEvent({
-                            category: "subscriptin-details",
-                            action: `${_.kebabCase(card.title)}`,
-                          });
-                        } else {
-                          ref?.current?.classList.add("hidden");
-                        }
-                      });
-                    }}
-                  >
-                    <Icon
-                      icon={card.icon as IconProp}
-                      size="1x"
-                      className="greeter"
-                    />
+                  return (
+                    <div
+                      key={index}
+                      ref={itemRef}
+                      className={`details-item filter-${categoryName}`}
+                      onClick={async () => {
+                        _.each(bodyRefs, async (ref) => {
+                          if (ref === bodyRef) {
+                            bodyRef.current?.classList.toggle("hidden");
+                            trackEvent({
+                              category: "subscriptin-details",
+                              action: `${_.kebabCase(card.title)}`,
+                            });
 
-                    <div className="content">
-                      <p className="title">{card.title}</p>
-                      <Icon icon="play" size="1x" className="divider" />
-                      <p className="body hidden" ref={bodyRef}>
-                        {card.body}
-                      </p>
+                            console.log("Track event");
+                          } else {
+                            ref?.current?.classList.add("hidden");
+                          }
+                        });
+                      }}
+                    >
+                      <Icon
+                        icon={card.icon as IconProp}
+                        size="1x"
+                        className="greeter"
+                      />
+
+                      <div className="content">
+                        <p className="title">{card.title}</p>
+                        <Icon icon="play" size="1x" className="divider" />
+                        <p className="body hidden" ref={bodyRef}>
+                          {card.body}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                );
-              }
-            )}
-          </div>
-        ))}
+                  );
+                }
+              )}
+            </div>
+          )
+        )}
       </div>
     </div>
   );

@@ -2,10 +2,11 @@
 
 import _ from "lodash-es";
 import { Outlet } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useLayoutEffect } from "react";
 import Icon from "../components/Icon";
 import SEO from "../components/SEO";
 import Button from "../components/Button";
+import { useMatomo } from "@datapunt/matomo-tracker-react";
 
 type AppProps = {
   config: object;
@@ -26,6 +27,16 @@ export default function Root(Props: AppProps) {
   const NavbarMenu = lazy(() => import("../components/NavbarMenu"));
   const SocialLink = lazy(() => import("../components/SocialLink"));
   const SocialLinkGroup = lazy(() => import("../components/SocialLinkGroup"));
+
+  const { trackPageView, enableLinkTracking } = useMatomo();
+
+  enableLinkTracking();
+
+  // Track page view
+  useLayoutEffect(() => {
+    trackPageView({});
+    console.log("Track page view");
+  });
 
   return (
     <div data-theme="owner" className="w-screen bg-light-200 overflow-x-hidden">

@@ -6,19 +6,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import "./utils/fontawesome.ts";
-import { matomoProps } from "./utils/matomo.ts";
+import matomo from "./utils/matomo.ts";
 import "./utils/moment.ts";
 import { HelmetProvider } from "react-helmet-async";
-
 
 const root: HTMLElement = document.getElementById("root") as HTMLElement;
 
 ReactDOM.createRoot(root).render(
-  <React.StrictMode>
-    <HelmetProvider>
-      <MatomoProvider {...matomoProps}>
-        <App />
-      </MatomoProvider>
-    </HelmetProvider>
-  </React.StrictMode>
+  <HelmetProvider>
+    <MatomoProvider value={matomo}>
+      <App />
+    </MatomoProvider>
+  </HelmetProvider>
 );
