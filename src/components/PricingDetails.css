@@ -28,6 +28,7 @@
   @apply text-secondary-600;
   @apply border-transparent;
   @apply rounded-3xl shadow-lg;
+  @apply transition-all delay-75 duration-300;
 }
 
 .subscription .filter .caption {
@@ -35,16 +36,19 @@
   @apply flex items-center justify-start gap-2;
   @apply lg:flex-col;
   @apply bg-secondary-800;
+  @apply transition-all delay-75 duration-300;
 }
 
 .subscription .filter .caption .icon {
   @apply text-secondary-400;
   @apply text-2xl;
+  @apply transition-all delay-75 duration-300;
 }
 
 .subscription .filter .caption .text {
   @apply text-secondary-400;
-  @apply text-base lg:text-xl font-noto-serif font-bold;
+  @apply text-base lg:text-xl 2xl:text-3xl font-noto-serif font-bold;
+  @apply transition-all delay-75 duration-300;
   font-variant: small-caps;
 }
 
@@ -60,17 +64,17 @@
 
 .subscription .filter .price span {
   @apply relative w-full h-full;
-  @apply px-4 py-8 lg:py-20;
+  @apply px-4 py-8 lg:py-20 2xl:py-32;
   @apply bg-secondary-950 bg-opacity-50;
   @apply border border-transparent;
   @apply text-4xl lg:text-6xl text-center;
   @apply text-secondary-800 font-display;
+  @apply transition-all delay-75 duration-300;
 }
 
 .subscription .filter.active {
   @apply border-transparent;
 }
-
 
 .subscription .filter.active .text {
   @apply text-secondary-600;
@@ -86,7 +90,7 @@
 }
 
 .subscription .filter:hover {
-  @apply border-secondary-400;
+  @apply border-secondary-500;
 }
 
 .subscription .filter:hover .price span {
@@ -104,7 +108,6 @@
 .subscription .filter:hover .caption {
   @apply bg-secondary-500;
 }
-
 
 .subscription .filter.selected:focus,
 .subscription .filter.selected {
@@ -141,7 +144,7 @@
 .subscription .details-item {
   @apply cursor-pointer;
   @apply overflow-hidden;
-  @apply min-h-[132px];
+  @apply min-h-[148px];
   @apply justify-end items-start gap-2;
   @apply hidden lg:inline-flex lg:opacity-0;
   @apply transition-all delay-75 duration-300;
@@ -152,34 +155,62 @@
 }
 
 .subscription .details-item .title {
-  @apply mb-2;
+  @apply mb-6;
   @apply text-start text-xl 2xl:text-2xl font-noto;
+  @apply transition-all delay-75 duration-300;
   font-variant: small-caps;
 }
 
 .subscription .details-item .body {
   @apply pb-8;
   @apply text-start text-base 2xl:text-lg font-noto-serif;
+  @apply transition-all delay-75 duration-300;
 }
 
-.subscription .details-item .icon {
+.subscription .details-item .greeter {
   @apply w-12 h-12;
   @apply bg-secondary-50;
   @apply rounded-full;
   @apply text-xl text-secondary-600;
+  @apply transition-all delay-75 duration-300;
 }
 
-.subscription .details-item .icon.divider {
+.subscription .details-item .divider {
   @apply w-2/3 h-3;
-  @apply bg-transparent;
-  @apply rounded-none border-t-4 border-secondary-50;
+  @apply border-t-4 border-secondary-50;
   @apply text-base text-secondary-50;
+  @apply transition-all delay-75 duration-300;
 }
 
-.subscription .details-item .icon.divider svg {
+.subscription .details-item .divider svg {
   @apply rotate-90;
 }
 
 .subscription .details-item.active {
   @apply inline-flex lg:opacity-100;
+}
+
+.subscription .details-item:focus .divider,
+.subscription .details-item:hover .divider {
+  @apply border-t-4 border-secondary-300;
+  @apply text-secondary-300;
+  @apply bg-transparent;
+}
+
+.subscription .details-item.selected .title {
+  @apply text-secondary-300;
+}
+
+.subscription .details-item.selected .body {
+  @apply text-secondary-300;
+}
+
+.subscription .details-item.selected .greeter {
+  @apply bg-secondary-400;
+}
+
+.subscription .details-item.selected .divider {
+  @apply border-t-4 border-secondary-300;
+  @apply text-secondary-300;
+  @apply bg-transparent;
 }

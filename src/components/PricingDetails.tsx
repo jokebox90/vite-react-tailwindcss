@@ -219,7 +219,7 @@ export default function PricingDetails() {
                       });
                     }}
                   >
-                    <Icon icon={card.icon as IconProp} size="1x" />
+                    <Icon icon={card.icon as IconProp} size="1x" className="greeter" />
 
                     <div className="content">
                       <p className="title">{card.title}</p>
