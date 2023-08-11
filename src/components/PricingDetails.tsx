@@ -17,9 +17,11 @@ import { useMatomo } from "@datapunt/matomo-tracker-react";
 import Icon from "./Icon";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import "./PricingDetails.css";
+import { useLocation } from "react-router-dom";
 
 export default function PricingDetails() {
-  const { trackPageView } = useMatomo();
+  const location = useLocation();
+  const { trackPageView, trackEvent } = useMatomo();
   const cardProvider = useCardProvider();
   const observerRef = useRef(
     new IntersectionObserver((entries) => {
@@ -59,7 +61,7 @@ export default function PricingDetails() {
   // Track page view
   useEffect(() => {
     trackPageView({});
-  });
+  }, [location, trackPageView]);
 
   useLayoutEffect(() => handleObserver(observerRef.current), [observerRef]);
   useEffect(() => {
@@ -157,7 +159,7 @@ export default function PricingDetails() {
                 <div
                   ref={filterRef}
                   className={`filter filter-${item.name}`}
-                  onClick={() => {
+                  onClick={async () => {
                     if (selected === `filter-${item.name}`) {
                       setActive(item.filters.slice(0, -1));
                       setSelected(`filter-${arr[index - 1]?.name}`);
@@ -165,6 +167,11 @@ export default function PricingDetails() {
                       setActive(item.filters);
                       setSelected(`filter-${item.name}`);
                     }
+
+                    trackEvent({
+                      category: "subscription-filter",
+                      action: `filter-${item.name}`,
+                    });
                   }}
                 >
                   <div className="caption">
@@ -209,17 +216,25 @@ export default function PricingDetails() {
                     key={index}
                     ref={itemRef}
                     className={`details-item filter-${categoryName}`}
-                    onClick={() => {
-                      _.each(bodyRefs, (ref) => {
+                    onClick={async () => {
+                      _.each(bodyRefs, async (ref) => {
                         if (ref === bodyRef) {
                           bodyRef.current?.classList.toggle("hidden");
+                          trackEvent({
+                            category: "subscriptin-details",
+                            action: `${_.kebabCase(card.title)}`,
+                          });
                         } else {
                           ref?.current?.classList.add("hidden");
                         }
                       });
                     }}
                   >
-                    <Icon icon={card.icon as IconProp} size="1x" className="greeter" />
+                    <Icon
+                      icon={card.icon as IconProp}
+                      size="1x"
+                      className="greeter"
+                    />
 
                     <div className="content">
                       <p className="title">{card.title}</p>
