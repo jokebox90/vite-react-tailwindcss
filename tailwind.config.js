@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
 import daisyui from "daisyui";
+import opentype from "tailwindcss-opentype";
 
 export default {
   darkMode: "class",
@@ -69,7 +70,7 @@ export default {
       },
     },
   },
-  plugins: [daisyui],
+  plugins: [daisyui, opentype],
   daisyui: {
     themes: [
       {

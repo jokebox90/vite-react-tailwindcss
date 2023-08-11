@@ -32,6 +32,7 @@ export default function PricingDetails() {
       });
     })
   );
+  const categoryRefs: RefObject<HTMLElement>[] = [];
   const itemRefs: RefObject<HTMLElement>[] = [];
   const bodyRefs: RefObject<HTMLElement>[] = [];
   const filterRefs: RefObject<HTMLElement>[] = [];
@@ -64,12 +65,6 @@ export default function PricingDetails() {
       } else {
         ref.current?.classList.remove("active");
       }
-
-      if (_.includes(ref.current?.classList, selected)) {
-        ref.current?.classList.add("selected");
-      } else {
-        ref.current?.classList.remove("selected");
-      }
     });
 
     _.each(itemRefs, async (ref) => {
@@ -78,20 +73,48 @@ export default function PricingDetails() {
       } else {
         ref.current?.classList.remove("active");
       }
+    });
 
+    _.each(categoryRefs, async (ref) => {
+      if (_.intersection(ref.current?.classList, active).length > 0) {
+        ref.current?.classList.add("active");
+      } else {
+        ref.current?.classList.remove("active");
+      }
+    });
+  }, [active, filterRefs, itemRefs, categoryRefs]);
+
+  useEffect(() => {
+    _.each(filterRefs, async (ref) => {
       if (_.includes(ref.current?.classList, selected)) {
         ref.current?.classList.add("selected");
       } else {
         ref.current?.classList.remove("selected");
       }
     });
-  }, [active, selected, filterRefs, itemRefs]);
+
+    _.each(itemRefs, async (ref) => {
+      if (_.includes(ref.current?.classList, selected)) {
+        ref.current?.classList.add("selected");
+      } else {
+        ref.current?.classList.remove("selected");
+      }
+    });
+
+    _.each(categoryRefs, async (ref) => {
+      if (_.includes(ref.current?.classList, selected)) {
+        ref.current?.classList.add("selected");
+      } else {
+        ref.current?.classList.remove("selected");
+      }
+    });
+  }, [selected, filterRefs, itemRefs, categoryRefs]);
 
   return (
     <div className="subscription">
       <div className="pb-4 flex flex-col lg:grid lg:grid-cols-5 justify-between gap-4">
         <div className="text-start col-span-3">
-          <h3 className="pb-2 text-3xl font-display border-b-2 border-secondary-50">
+          <h3 className="pb-4 text-3xl font-display">
             Partagez le savoir faire de votre organisation sur le web
           </h3>
 
@@ -104,7 +127,9 @@ export default function PricingDetails() {
           </p>
         </div>
 
-        <div className="col-span-2 lg:flex lg:justify-center lg:items-center">
+        <div className="col-span-2 lg:flex lg:flex-col lg:justify-center lg:items-center">
+          <h3 className="pb-2 text-xl font-display">Forfaits</h3>
+
           <PriceToggleView
             toggle={() =>
               setPeriodicity((prevPeriodicity) =>
@@ -169,7 +194,7 @@ export default function PricingDetails() {
                     console.log("Track event");
                   }}
                 >
-                  <div className="caption">
+                  <h4 className="caption">
                     <Icon
                       icon={
                         _.includes(active, `filter-${item.name}`)
@@ -178,9 +203,8 @@ export default function PricingDetails() {
                       }
                       size="1x"
                     />
-
                     <span className="text">{item.title}</span>
-                  </div>
+                  </h4>
 
                   <div className="price">
                     <img src={`/img/${item.image}`} alt="" />
@@ -196,58 +220,109 @@ export default function PricingDetails() {
 
       <div className="details">
         {_.map(
-          ["partner", "advance", "starter"].reverse(),
-          (categoryName, key) => (
-            <div key={key} className="flex flex-col gap-4">
-              {_.map(
-                cardProvider.findBy({ key: "category", value: categoryName }),
-                (card, index) => {
-                  const itemRef = createRef<HTMLDivElement>();
-                  const bodyRef = createRef<HTMLParagraphElement>();
+          [
+            {
+              name: "starter",
+              filters: ["filter-starter"],
+              title: "Meilleure communication",
+              price: calculate(90),
+              image: "photographe.jpg",
+              comment: "Pour démarrer sereinement",
+            },
+            {
+              name: "advance",
+              filters: ["filter-starter", "filter-advance"],
+              title: "Gain en efficaté",
+              price: calculate(180),
+              image: "wordpress-developer.jpg",
+              comment: "Avec toutes les options Starter",
+            },
+            {
+              name: "partner",
+              filters: ["filter-starter", "filter-advance", "filter-partner"],
+              title: "Forte croissance",
+              price: calculate(450),
+              image: "app-store.jpg",
+              comment: "Avec toutes les options Advance",
+            },
+          ],
+          (category, key) => {
+            const categoryRef = createRef<HTMLParagraphElement>();
 
-                  itemRefs.push(itemRef);
-                  bodyRefs.push(bodyRef);
+            categoryRefs.push(categoryRef);
 
-                  return (
+            return (
+              <Fragment key={key}>
+                <div className="flex flex-col gap-4">
+                  <div
+                    ref={categoryRef}
+                    className={`mb-8 mx-12 px-2 pb-4 pt-8 bg-secondary-50 text-base text-secondary-800 rounded-xl text-center filter-${category.name}`}
+                  >
+                    <h3 className="text-xl font-noto-serif font-bold small-caps">
+                      Options {_.upperFirst(category.name)} *
+                    </h3>
                     <div
-                      key={index}
-                      ref={itemRef}
-                      className={`details-item filter-${categoryName}`}
-                      onClick={async () => {
-                        _.each(bodyRefs, async (ref) => {
-                          if (ref === bodyRef) {
-                            bodyRef.current?.classList.toggle("hidden");
-                            trackEvent({
-                              category: "subscriptin-details",
-                              action: `${_.kebabCase(card.title)}`,
+                      className={`w-1/4 mx-auto mt-4 filter-${category.name}`}
+                    ></div>
+                    <p>Tarif de {category.price} € par mois</p>
+                    <p>Soit {category.price * 12} € par an</p>
+                    <p className="italic text-sm mt-4">* {category.comment}</p>
+                  </div>
+
+                  {_.map(
+                    cardProvider.findBy({
+                      key: "category",
+                      value: category.name,
+                    }),
+                    (card, index) => {
+                      const itemRef = createRef<HTMLDivElement>();
+                      const bodyRef = createRef<HTMLParagraphElement>();
+
+                      itemRefs.push(itemRef);
+                      bodyRefs.push(bodyRef);
+
+                      return (
+                        <div
+                          key={index}
+                          ref={itemRef}
+                          className={`details-item filter-${category.name}`}
+                          onClick={async () => {
+                            _.each(bodyRefs, async (ref) => {
+                              if (ref === bodyRef) {
+                                bodyRef.current?.classList.toggle("hidden");
+                                trackEvent({
+                                  category: "subscriptin-details",
+                                  action: `${_.kebabCase(card.title)}`,
+                                });
+
+                                console.log("Track event");
+                              } else {
+                                ref?.current?.classList.add("hidden");
+                              }
                             });
+                          }}
+                        >
+                          <Icon
+                            icon={card.icon as IconProp}
+                            size="1x"
+                            className="greeter"
+                          />
 
-                            console.log("Track event");
-                          } else {
-                            ref?.current?.classList.add("hidden");
-                          }
-                        });
-                      }}
-                    >
-                      <Icon
-                        icon={card.icon as IconProp}
-                        size="1x"
-                        className="greeter"
-                      />
-
-                      <div className="content">
-                        <p className="title">{card.title}</p>
-                        <Icon icon="play" size="1x" className="divider" />
-                        <p className="body hidden" ref={bodyRef}>
-                          {card.body}
-                        </p>
-                      </div>
-                    </div>
-                  );
-                }
-              )}
-            </div>
-          )
+                          <div className="content">
+                            <p className="title">{card.title}</p>
+                            <Icon icon="play" size="1x" className="divider" />
+                            <p className="body hidden" ref={bodyRef}>
+                              {card.body}
+                            </p>
+                          </div>
+                        </div>
+                      );
+                    }
+                  )}
+                </div>
+              </Fragment>
+            );
+          }
         )}
       </div>
     </div>
