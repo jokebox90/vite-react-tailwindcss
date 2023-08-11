@@ -4,8 +4,6 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import appConfig from "./app.json";
 import Root from "./pages/Root";
 import Home from "./pages/Home";
-import { useMatomo } from "@datapunt/matomo-tracker-react";
-import { useLayoutEffect } from "react";
 
 const router = createBrowserRouter([
   {

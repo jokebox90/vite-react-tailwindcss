@@ -17,7 +17,6 @@ import { useMatomo } from "@datapunt/matomo-tracker-react";
 import Icon from "./Icon";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import "./PricingDetails.css";
-import { useLocation } from "react-router-dom";
 
 export default function PricingDetails() {
   const { trackEvent } = useMatomo();
