@@ -109,14 +109,12 @@ export default function PricingDetails() {
   }, [state.selected, filterRefs, itemRefs, categoryRefs]);
 
   return (
-    <div className="subscription" ref={mainRef}>
-      <div className="pb-4 flex flex-col lg:grid lg:grid-cols-3 justify-between gap-4">
-        <div className="text-start col-span-2">
-          <h3 className="pb-4 text-3xl font-display">
-            Partagez le savoir faire de votre organisation sur le web
-          </h3>
+    <div className="pricing" ref={mainRef}>
+      <div className="heading">
+        <div className="heading-body">
+          <h2>Partagez le savoir faire de votre organisation sur le web</h2>
 
-          <p className="pt-4 pb-4">
+          <p className="">
             Définissez le service adapté à votre manière de communiquer sur le
             web. Assurez-vous d'atteindre les personnes de votre choix et de
             remplir les objectifs fixés par votre activité. Nous mettons en
@@ -125,107 +123,35 @@ export default function PricingDetails() {
           </p>
         </div>
 
-        <div className="col-span-1 place-self-center">
-          <p className="text-lg font-display">Engagement</p>
-          <PriceToggleView
-            toggle={() =>
-              setState((prevState) => ({
-                ...prevState,
-                periodicity:
-                  prevState.periodicity == "monthly"
-                    ? "annualy"
-                    : "monthly",
-              }))
-            }
-            variants={["Par mois", "Par années"]}
-            wrapperClass=""
-          />
+        <div className="heading-side">
+          <h3>Engagement</h3>
+
+          <label
+            htmlFor="toggle-periodicity"
+            className="inline-flex gap-4 px-8 py-4 bg-secondary-50 text-accent-500 font-bold rounded-xl"
+          >
+            <span>Par mois</span>
+
+            <input
+              id="toggle-periodicity"
+              type="checkbox"
+              className="toggle toggle-accent"
+              checked={state.periodicity == "annualy"}
+              onChange={() =>
+                setState((prevState) => ({
+                  ...prevState,
+                  periodicity:
+                    prevState.periodicity == "monthly" ? "annualy" : "monthly",
+                }))
+              }
+            />
+
+            <span>Par année</span>
+          </label>
         </div>
       </div>
 
-      <div className="group">
-        {_.map(
-          [
-            {
-              name: "starter",
-              filters: ["filter-starter"],
-              title: "Meilleure communication",
-              price: calculate(90),
-              image: "photographe.jpg",
-            },
-            {
-              name: "advance",
-              filters: ["filter-starter", "filter-advance"],
-              title: "Gain en efficaté",
-              price: calculate(180),
-              image: "wordpress-developer.jpg",
-            },
-            {
-              name: "partner",
-              filters: ["filter-starter", "filter-advance", "filter-partner"],
-              title: "Forte croissance",
-              price: calculate(450),
-              image: "app-store.jpg",
-            },
-          ],
-          (item, index, arr) => {
-            const filterRef = createRef<HTMLDivElement>();
-
-            filterRefs.push(filterRef);
-
-            return (
-              <Fragment key={index}>
-                <div
-                  ref={filterRef}
-                  className={`filter filter-${item.name}`}
-                  onClick={async () => {
-                    if (state.selected === `filter-${item.name}`) {
-                      setState((prevState) => ({
-                        ...prevState,
-                        active: item.filters.slice(0, -1),
-                        selected: `filter-${arr[index - 1]?.name}`,
-                      }));
-                    } else {
-                      setState((prevState) => ({
-                        ...prevState,
-                        active: item.filters,
-                        selected: `filter-${item.name}`,
-                      }));
-                    }
-
-                    trackEvent({
-                      category: "subscription-filter",
-                      action: `filter-${item.name}`,
-                    });
-
-                    console.log("Track event");
-                  }}
-                >
-                  <h4 className="caption">
-                    <Icon
-                      icon={
-                        _.includes(state.active, `filter-${item.name}`)
-                          ? ["fas", "check-square"]
-                          : ["far", "square"]
-                      }
-                      size="1x"
-                    />
-                    <span className="text">{item.title}</span>
-                  </h4>
-
-                  <div className="price">
-                    <img src={`/img/${item.image}`} alt="" />
-
-                    <span>{`${item.price} €`}</span>
-                  </div>
-                </div>
-              </Fragment>
-            );
-          }
-        )}
-      </div>
-
-      <div className="details">
+      <div className="option-group">
         {_.map(
           [
             {
@@ -253,78 +179,131 @@ export default function PricingDetails() {
               comment: "Avec toutes les options Advance",
             },
           ],
-          (category, key) => {
-            const categoryRef = createRef<HTMLParagraphElement>();
+          (item, index, arr) => {
+            const filterRef = createRef<HTMLDivElement>();
 
-            categoryRefs.push(categoryRef);
+            filterRefs.push(filterRef);
+
+            const handleFilter = async () => {
+              if (state.selected === `filter-${item.name}`) {
+                setState((prevState) => ({
+                  ...prevState,
+                  active: item.filters.slice(0, -1),
+                  selected: `filter-${arr[index - 1]?.name}`,
+                }));
+              } else {
+                setState((prevState) => ({
+                  ...prevState,
+                  active: item.filters,
+                  selected: `filter-${item.name}`,
+                }));
+              }
+
+              trackEvent({
+                category: "subscription-filter",
+                action: `filter-${item.name}`,
+              });
+            };
 
             return (
-              <Fragment key={key}>
-                <div className="category" ref={categoryRef}>
-                  <div className={`heading filter-${category.name}`}>
-                    <h3 className="text-xl font-noto-serif font-bold small-caps">
-                      Options {_.upperFirst(category.name)} *
-                    </h3>
-                    <div
-                      className={`w-1/4 mx-auto mt-4 filter-${category.name}`}
-                    ></div>
-                    <p>Tarif de {category.price} € par mois</p>
-                    <p>Soit {category.price * 12} € par an</p>
-                    <p className="italic text-sm mt-4">* {category.comment}</p>
+              <div
+                key={index}
+                ref={filterRef}
+                className={`option filter-${item.name}`}
+              >
+                <div className="option-heading"
+                onClick={handleFilter}>
+                  <h3 className="option-display-title">{item.title}</h3>
+
+                  <div className="option-display-price">
+                    <img src={`/img/${item.image}`} alt="" />
+
+                    <span>&nbsp;</span>
                   </div>
 
-                  {_.map(
-                    cardProvider.findBy({
-                      key: "category",
-                      value: category.name,
-                    }),
-                    (card, index) => {
-                      const itemRef = createRef<HTMLDivElement>();
-                      const bodyRef = createRef<HTMLParagraphElement>();
-
-                      itemRefs.push(itemRef);
-                      bodyRefs.push(bodyRef);
-
-                      return (
-                        <div
-                          key={index}
-                          ref={itemRef}
-                          className={`details-item filter-${category.name}`}
-                          onClick={async () => {
-                            _.each(bodyRefs, async (ref) => {
-                              if (ref === bodyRef) {
-                                bodyRef.current?.classList.toggle("hidden");
-                                trackEvent({
-                                  category: "subscriptin-details",
-                                  action: `${_.kebabCase(card.title)}`,
-                                });
-
-                                console.log("Track event");
-                              } else {
-                                ref?.current?.classList.add("hidden");
-                              }
-                            });
-                          }}
-                        >
-                          <Icon
-                            icon={card.icon as IconProp}
-                            size="1x"
-                            className="greeter"
-                          />
-
-                          <div className="content">
-                            <p className="title">{card.title}</p>
-                            <Icon icon="play" size="1x" className="divider" />
-                            <p className="body hidden" ref={bodyRef}>
-                              {card.body}
-                            </p>
-                          </div>
-                        </div>
-                      );
+                  <Icon
+                    icon={
+                      _.includes(state.active, `filter-${item.name}`)
+                        ? ["fas", "check-square"]
+                        : ["far", "square"]
                     }
-                  )}
+                    size="1x"
+                  />
+
+                  <h4 className="option-title">
+                    Option {_.upperFirst(item.name)}
+                  </h4>
+
+                  <p className="option-comment">{item.comment}</p>
+
+                  <p className="option-price mb-4 text-6xl font-display">
+                    {item.price} €
+                  </p>
+
+                  <p className="option-description">
+                    Tarif mensuel
+                    <br />
+                    Soit {item.price * 12} € par an
+                  </p>
                 </div>
-              </Fragment>
+
+                {_.map(
+                  cardProvider.findBy({
+                    key: "category",
+                    value: item.name,
+                  }),
+                  (feature, index) => {
+                    const itemRef = createRef<HTMLDivElement>();
+                    const bodyRef = createRef<HTMLParagraphElement>();
+
+                    itemRefs.push(itemRef);
+                    bodyRefs.push(bodyRef);
+
+                    const handleCollapse = async () => {
+                      _.each(itemRefs, async (ref) => {
+                        if (ref === itemRef) {
+                          ref.current?.classList.toggle("active");
+                          trackEvent({
+                            category: "subscriptin-details",
+                            action: `${_.kebabCase(feature.title)}`,
+                          });
+
+                          console.log("Track event");
+                        } else {
+                          ref?.current?.classList.remove("active");
+                        }
+                      });
+                    };
+
+                    return (
+                      <div
+                        key={index}
+                        ref={itemRef}
+                        className="feature"
+                        onClick={handleCollapse}
+                      >
+                        <Icon
+                          icon={feature.icon as IconProp}
+                          size="1x"
+                          className="feature-icon"
+                        />
+
+                        <div className="feature-content">
+                          <p className="feature-title">{feature.title}</p>
+                          <Icon
+                            icon="play"
+                            size="1x"
+                            className="feature-divider"
+                          />
+                          <p className="feature-body" ref={bodyRef}>
+                            {feature.body}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  }
+                )}
+              </div>
             );
           }
         )}

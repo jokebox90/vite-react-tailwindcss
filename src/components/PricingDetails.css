@@ -1,226 +1,187 @@
 /* src/components/PricingDetails.css */
 
-.subscription {
+.pricing {
   @apply w-full px-4 lg:px-16 xl:px-32 pt-16 lg:pt-40 pb-24;
   @apply flex flex-col;
-  @apply bg-secondary-600 text-secondary-50;
+  @apply bg-secondary-500 text-stone-50;
   @apply opacity-20;
-  @apply transition-none;
 }
 
-.subscription.observe {
+.pricing.observe {
   @apply opacity-100;
-  @apply transition-none;
   @apply transition-all delay-300 duration-500;
 }
 
-.subscription .details .category {
-  @apply flex flex-col gap-4;
+.pricing > .heading {
+  @apply pb-16 flex flex-col lg:grid lg:grid-cols-3 justify-between gap-4;
 }
 
-.subscription .details .category .heading {
-  @apply mb-8 mx-12 px-2 pb-4 pt-8;
-  @apply text-base text-secondary-800 text-center;
-  @apply bg-secondary-50;
-  @apply rounded-lg;
-}
-
-.subscription .group {
-  @apply w-full;
-  @apply mt-8 mb-8;
-  @apply flex flex-col lg:flex-row justify-around gap-4;
-}
-
-.subscription .filter {
-  @apply overflow-hidden w-full;
-  @apply grid grid-cols-2;
-  @apply lg:flex lg:flex-col;
-  @apply border-2;
-  @apply text-secondary-600;
-  @apply border-transparent;
-  @apply rounded-3xl shadow-lg;
-  @apply transition-all delay-75 duration-300;
-}
-
-.subscription .filter .caption {
-  @apply px-2 lg:py-8;
-  @apply flex items-center justify-start gap-2;
-  @apply lg:flex-col;
-  @apply bg-secondary-800;
-  @apply transition-all delay-75 duration-300;
-}
-
-.subscription .filter .caption .icon {
-  @apply text-secondary-400;
-  @apply text-2xl;
-  @apply transition-all delay-75 duration-300;
-}
-
-.subscription .filter .caption .text {
-  @apply text-secondary-400;
-  @apply text-base lg:text-xl 2xl:text-3xl font-noto-serif font-bold;
-  @apply transition-all delay-75 duration-300;
-  font-variant: small-caps;
-}
-
-.subscription .filter .price {
-  @apply relative overflow-hidden;
-  @apply w-full;
-  @apply flex-1 flex items-center justify-center;
-}
-
-.subscription .filter .price img {
-  @apply absolute bottom-0 left-0 w-full;
-}
-
-.subscription .filter .price span {
-  @apply relative w-full h-full;
-  @apply px-4 py-8 lg:py-20 2xl:py-32;
-  @apply bg-secondary-950 bg-opacity-50;
-  @apply border border-transparent;
-  @apply text-4xl lg:text-6xl text-center;
-  @apply text-secondary-800 font-display;
-  @apply transition-all delay-75 duration-300;
-}
-
-.subscription .filter.active {
-  @apply border-transparent;
-}
-
-.subscription .filter.active .text {
-  @apply text-secondary-600;
-}
-
-.subscription .filter.active .caption {
-  @apply bg-secondary-50;
-}
-
-.subscription .filter.active .price span {
-  @apply bg-secondary-950 bg-opacity-50;
-  @apply text-secondary-800;
-}
-
-.subscription .filter:hover {
-  @apply border-secondary-500;
-}
-
-.subscription .filter:hover .price span {
-  @apply text-secondary-500;
-}
-
-.subscription .filter:hover .text {
-  @apply text-secondary-100;
-}
-
-.subscription .filter:hover .icon {
-  @apply text-secondary-100;
-}
-
-.subscription .filter:hover .caption {
-  @apply bg-secondary-500;
-}
-
-.subscription .filter.selected:focus,
-.subscription .filter.selected {
-  @apply border-transparent;
-}
-
-.subscription .filter.selected:focus .price span,
-.subscription .filter.selected .price span {
-  @apply text-secondary-400;
-}
-
-.subscription .filter.selected:focus .text,
-.subscription .filter.selected .text {
-  @apply text-secondary-50;
-}
-
-.subscription .filter.selected:focus .icon,
-.subscription .filter.selected .icon {
-  @apply text-secondary-50;
-}
-
-.subscription .filter.selected:focus .caption,
-.subscription .filter.selected .caption {
-  @apply bg-secondary-400;
-}
-
-.subscription .details {
-  @apply w-full;
-  @apply flex flex-col items-start gap-4;
-  @apply lg:grid lg:grid-cols-3 lg:grid-flow-row-dense lg:auto-rows-fr;
+.pricing > .heading .heading-body {
+  @apply col-span-2;
   @apply text-start;
 }
 
-.subscription .details-item {
-  @apply cursor-pointer;
-  @apply overflow-hidden;
-  @apply min-h-[148px];
-  @apply justify-end items-start gap-2;
-  @apply hidden lg:inline-flex lg:opacity-0;
-  @apply transition-all delay-75 duration-300;
+.pricing > .heading .heading-body h2 {
+  @apply w-2/3 mb-8 text-6xl font-display leading-tight;
 }
 
-.subscription .details-item .content {
+.pricing > .heading .heading-body p {
+  @apply text-xl leading-relaxed;
+}
+
+.pricing > .heading .heading-side {
+  @apply col-span-1 place-self-end w-full flex flex-col items-center;
+}
+
+.pricing > .heading .heading-side h3 {
+  @apply mb-4;
+  @apply text-xl font-display;
+}
+
+.pricing .price-toggle-view {
+  @apply toggle-secondary;
+}
+
+.pricing .option-group {
+  @apply w-full h-full;
+  @apply mt-8 mb-8;
+  @apply flex flex-col lg:grid lg:grid-cols-3 grid-flow-row-dense auto-rows-fr gap-4;
+}
+
+.pricing .option {
+  @apply overflow-hidden w-full;
+  @apply px-4 pt-8 pb-16;
+  @apply lg:flex lg:flex-col;
+  @apply bg-secondary-700;
+  @apply text-stone-400;
+  @apply border-2;
+  @apply border-transparent;
+  @apply rounded-3xl shadow-lg;
+  @apply transition-all duration-700;
+}
+
+.pricing .option:focus,
+.pricing .option.active {
+  @apply text-stone-700;
+  @apply bg-secondary-100;
+}
+
+.pricing .option:hover {
+  @apply text-stone-200;
+  @apply bg-secondary-600;
+}
+
+.pricing .option-display-title {
+  @apply mt-4 mb-8;
+  @apply text-xl small-caps font-bold;
+}
+
+.pricing .option-heading {
+  @apply pb-16;
+}
+
+.pricing .option-heading .icon {
+  @apply mt-4 mb-8;
+  @apply text-3xl;
+}
+
+.pricing .option-title {
+  @apply mt-4 mb-4;
+  @apply text-xl small-caps font-bold;
+}
+
+.pricing .option-price {
+  @apply mt-4 mb-4;
+  @apply text-6xl small-caps font-bold;
+}
+
+.pricing .option-comment {
+  @apply text-lg;
+}
+
+.pricing .feature {
+  @apply mb-8 last:mb-0;
+  @apply inline-flex gap-2;
+  @apply text-start;
+}
+
+.pricing .feature-icon {
+  @apply w-12 h-12 mb-4;
+  @apply bg-stone-400;
+  @apply text-stone-700;
+  @apply text-2xl;
+  @apply rounded-full;
+  @apply transition-all duration-700;
+}
+
+.pricing .option:focus .feature-icon,
+.pricing .option.active .feature-icon {
+  @apply text-secondary-100;
+  @apply bg-stone-500;
+}
+
+.pricing .option:hover .feature-icon {
+  @apply bg-stone-200;
+  @apply text-stone-500;
+}
+
+.pricing .feature-content {
   @apply flex-1;
 }
 
-.subscription .details-item .title {
-  @apply text-start text-xl 2xl:text-2xl font-noto;
-  @apply transition-all delay-75 duration-300;
-  font-variant: small-caps;
+.pricing .feature-title {
+  @apply text-base small-caps font-bold;
 }
 
-.subscription .details-item .body {
-  @apply pb-8;
-  @apply text-start text-base 2xl:text-lg font-noto-serif;
-  @apply transition-all delay-75 duration-300;
+.pricing .feature-body {
+  @apply mt-2;
+  @apply hidden;
 }
 
-.subscription .details-item .greeter {
-  @apply w-12 h-12;
-  @apply bg-secondary-50;
-  @apply rounded-full;
-  @apply text-xl text-secondary-600;
-  @apply transition-all delay-75 duration-300;
+.pricing .feature:focus .feature-body,
+.pricing .feature.active .feature-body {
+  @apply block;
 }
 
-.subscription .details-item .divider {
-  @apply w-2/3 mt-2;
-  @apply border-t-4 border-secondary-50;
-  @apply text-base text-secondary-50;
-  @apply transition-all delay-75 duration-300;
+.pricing .feature .feature-divider {
+  @apply relative;
+  @apply w-2/3 h-3;
+  @apply text-lg mt-2 p-0;
+  @apply border-y-4;
+  @apply border-t-stone-400 border-b-transparent;
 }
 
-.subscription .details-item .divider svg {
+.pricing .feature .feature-divider svg {
   @apply rotate-90;
 }
 
-.subscription .details-item.active {
-  @apply inline-flex lg:opacity-100;
+.pricing .option:focus .feature-divider,
+.pricing .option.active .feature-divider {
+  @apply border-t-stone-500;
 }
 
-.subscription .details-item:focus .divider,
-.subscription .details-item:hover .divider {
-  @apply border-t-4 border-secondary-300;
-  @apply text-secondary-300;
-  @apply bg-transparent;
+.pricing .option:hover .feature-divider {
+  @apply border-t-stone-100;
 }
 
-.subscription .details-item.selected .title {
-  @apply text-secondary-300;
+.pricing .feature:focus .feature-divider,
+.pricing .option:hover .feature.active .feature-divider {
+  @apply border-b-stone-100 border-t-transparent;
 }
 
-.subscription .details-item.selected .body {
-  @apply text-secondary-300;
+.pricing .feature.active .feature-divider {
+  @apply border-b-stone-600 border-t-transparent;
 }
 
-.subscription .details-item.selected .greeter {
-  @apply bg-secondary-400;
+.pricing .feature:focus .feature-divider svg,
+.pricing .feature.active .feature-divider svg {
+  @apply -rotate-90;
 }
 
-.subscription .details-item.selected .divider {
-  @apply border-t-4 border-secondary-300;
-  @apply text-secondary-300;
-  @apply bg-transparent;
+.pricing .feature:hover .feature-divider {
+  @apply border-t-stone-50;
+}
+
+.pricing .feature:hover .feature-divider svg {
+  @apply text-stone-50;
 }
