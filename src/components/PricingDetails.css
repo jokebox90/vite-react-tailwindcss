@@ -22,7 +22,7 @@
 }
 
 .pricing > .heading .heading-body h2 {
-  @apply w-2/3 mb-8 text-6xl font-display leading-tight;
+  @apply w-2/3 mb-8 text-3xl lg:text-6xl font-display leading-tight;
 }
 
 .pricing > .heading .heading-body p {
