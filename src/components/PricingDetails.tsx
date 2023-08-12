@@ -2,7 +2,6 @@
 
 import _ from "lodash-es";
 import {
-  Fragment,
   RefObject,
   createRef,
   useCallback,
@@ -10,9 +9,8 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
-  useState,
+  useState
 } from "react";
-import PriceToggleView from "./PriceToggleView";
 import useCardProvider from "../composables/cardProvider";
 import { useMatomo } from "@jonkoops/matomo-tracker-react";
 import Icon from "./Icon";
