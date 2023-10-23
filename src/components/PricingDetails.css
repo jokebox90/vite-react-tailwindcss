@@ -1,7 +1,8 @@
 /* src/components/PricingDetails.css */
 
 .pricing {
-  @apply w-full px-4 lg:px-16 xl:px-32 pt-16 lg:pt-40 pb-24;
+  @apply w-full px-4 pt-16 pb-24;
+  @apply lg:px-16 xl:px-32 lg:pt-40;
   @apply flex flex-col;
   @apply bg-secondary-500 text-stone-50;
   @apply opacity-20;
@@ -13,7 +14,9 @@
 }
 
 .pricing > .heading {
-  @apply pb-16 flex flex-col lg:grid lg:grid-cols-3 justify-between gap-4;
+  @apply pb-16;
+  @apply flex flex-col justify-between gap-4;
+  @apply lg:grid lg:grid-cols-3;
 }
 
 .pricing > .heading .heading-body {
@@ -22,7 +25,8 @@
 }
 
 .pricing > .heading .heading-body h2 {
-  @apply w-2/3 mb-8 text-3xl lg:text-6xl font-display leading-tight;
+  @apply w-2/3 mb-8;
+  @apply text-3xl lg:text-6xl font-display leading-tight;
 }
 
 .pricing > .heading .heading-body p {
@@ -30,7 +34,9 @@
 }
 
 .pricing > .heading .heading-side {
-  @apply col-span-1 place-self-end w-full flex flex-col items-center;
+  @apply w-full;
+  @apply flex flex-col items-center;
+  @apply col-span-1 place-self-end;
 }
 
 .pricing > .heading .heading-side h3 {
@@ -45,7 +51,9 @@
 .pricing .option-group {
   @apply w-full h-full;
   @apply mt-8 mb-8;
-  @apply flex flex-col lg:grid lg:grid-cols-3 grid-flow-row-dense auto-rows-fr gap-4;
+  @apply flex flex-col;
+  @apply lg:grid lg:grid-cols-3 gap-4;
+  @apply grid-flow-row-dense auto-rows-fr;
 }
 
 .pricing .option {
